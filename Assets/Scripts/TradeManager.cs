@@ -39,6 +39,7 @@ public class TradeManager : MonoBehaviour
     // name not set in stone, this is run when a card is selected.
     void OnDecide()
     {
+        // if the trade was awaiting acceptance and was accepted, do things.
         if (state == TradeState.settlement && agreement) { OnAccept(); }
 
         // Check for ace and settlement, increment if settlement but not ace.
