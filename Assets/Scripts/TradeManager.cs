@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum TradeState
+public enum TradeState
 {
     offer,
     decision
@@ -19,6 +19,7 @@ public class TradeManager : MonoBehaviour
 
     // increment when turn increase
     public int index;
+    public TradeState state;
 
     void Start()
     {
@@ -33,5 +34,10 @@ public class TradeManager : MonoBehaviour
     }
 
     // name not set in stone
-    void OnOfferDecide(
+    void OnDecide()
+    {
+
+
+
+    }
 }
