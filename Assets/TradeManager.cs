@@ -10,17 +10,13 @@ public class TradeManager : MonoBehaviour
     public card[,] inputCards;
     public bool[] aceCheck;
 
-    // Start is called before the first frame update
     void Start()
     {
+        // Get each player's cards from the importer.
         importer = GameObject.Find(importerName);
         TradeExporter te = importer.GetComponent<TradeExporter>();
         inputCards = te.cards;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
