@@ -16,6 +16,7 @@ public class TradeManager : MonoBehaviour
     public Card[,] inputCards; // dim 0 shall represent players, dim 1 shall represent their stock.
     public bool[] aceCheck;
     public bool[] kingCheck;
+    public bool[] jokerCheck;
 
     // increment when turn increase
     public int index;
@@ -34,6 +35,8 @@ public class TradeManager : MonoBehaviour
         inputCards = te.cards;
         aceCheck = te.aceCheck;
         kingCheck = te.kingCheck;
+
+        // check for joker
     }
 
     // name not set in stone, this is run when a card is selected.
@@ -60,5 +63,6 @@ public class TradeManager : MonoBehaviour
     void OnNewTurn()
     {
         Debug.Log("This isn't implemented!!!");
+        // this is mostly going to be UI stuff, so I'm postponing this.
     }
 }
