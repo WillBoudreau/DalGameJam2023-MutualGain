@@ -5,7 +5,7 @@ using UnityEngine;
 public enum TradeState
 {
     offer,
-    decision
+    settlement
 }
 
 public class TradeManager : MonoBehaviour
@@ -33,11 +33,18 @@ public class TradeManager : MonoBehaviour
         kingCheck = te.kingCheck;
     }
 
-    // name not set in stone
+    // name not set in stone, this is run when a card is selected.
     void OnDecide()
     {
 
 
 
+        // Check for ace, increment if false.
+        if (!aceCheck[index]) { index++; }
+
+        // run this at the end.
+        TradeState ts = state;
+        if (ts == TradeState.offer) { state = TradeState.settlement; }
+        if (ts == TradeState.settlement) { state = TradeState.offer; }
     }
 }
