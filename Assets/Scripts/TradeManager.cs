@@ -21,6 +21,9 @@ public class TradeManager : MonoBehaviour
     public int index;
     public TradeState state;
 
+    public Card offer;
+    public bool agreement; // did the other player agree to trade?
+
     void Start()
     {
         // Get the importer.
@@ -36,15 +39,20 @@ public class TradeManager : MonoBehaviour
     // name not set in stone, this is run when a card is selected.
     void OnDecide()
     {
+        if (state == TradeState.settlement && agreement) { OnAccept(); }
 
-
-
-        // Check for ace, increment if false.
-        if (!aceCheck[index]) { index++; }
+        // Check for ace and settlement, increment if settlement but not ace.
+        if (state == TradeState.settlement && !aceCheck[index]) { index++; aceCheck[index] = false; }
 
         // run this at the end.
         TradeState ts = state;
-        if (ts == TradeState.offer) { state = TradeState.settlement; }
-        if (ts == TradeState.settlement) { state = TradeState.offer; }
+        if (ts == TradeState.settlement) { state = TradeState.offer; }      
+        if (kingCheck[index]) { OnAccept(); index++; } // if player has king, skip their settlement state and move on.
+        else { if (ts == TradeState.offer) { state = TradeState.settlement; } }
+    }
+
+    void OnAccept()
+    {
+        Debug.Log("This isn't implemented!!!");
     }
 }
