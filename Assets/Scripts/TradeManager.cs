@@ -2,14 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+enum TradeState
+{
+    offer,
+    decision
+}
+
 public class TradeManager : MonoBehaviour
 {
     public string importerName;
     GameObject importer;
 
-    public card[,] inputCards;
+    public Card[,] inputCards; // dim 0 shall represent players, dim 1 shall represent their stock.
     public bool[] aceCheck;
     public bool[] kingCheck;
+
+    // increment when turn increase
+    public int index;
 
     void Start()
     {
@@ -23,5 +32,6 @@ public class TradeManager : MonoBehaviour
         kingCheck = te.kingCheck;
     }
 
-    // void TradeTurn(int playerIndex)
+    // name not set in stone
+    void OnOfferDecide(
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TradeExporter : MonoBehaviour
 {
-    public card[,] cards;
+    public Card[,] cards;
     public bool[] aceCheck;
     public bool[] kingCheck;
 }
