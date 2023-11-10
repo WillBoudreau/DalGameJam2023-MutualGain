@@ -46,12 +46,17 @@ public class TradeManager : MonoBehaviour
 
         // run this at the end.
         TradeState ts = state;
-        if (ts == TradeState.settlement) { state = TradeState.offer; }      
         if (kingCheck[index]) { OnAccept(); index++; } // if player has king, skip their settlement state and move on.
         else { if (ts == TradeState.offer) { state = TradeState.settlement; } }
+        if (ts == TradeState.settlement) { state = TradeState.offer; OnNewTurn(); }
     }
 
     void OnAccept()
+    {
+        Debug.Log("This isn't implemented!!!");
+    }
+
+    void OnNewTurn()
     {
         Debug.Log("This isn't implemented!!!");
     }
