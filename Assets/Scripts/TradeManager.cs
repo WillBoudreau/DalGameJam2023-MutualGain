@@ -13,7 +13,7 @@ public class TradeManager : MonoBehaviour
     public string importerName;
     GameObject importer;
 
-    public Card[,] inputCards; // dim 0 shall represent players, dim 1 shall represent their stock.
+    public Card[,] cards; // dim 0 shall represent players, dim 1 shall represent their stock.
     public bool[] aceCheck;
     public bool[] kingCheck;
     public bool[] jokerCheck;
@@ -22,8 +22,10 @@ public class TradeManager : MonoBehaviour
     public int index;
     public TradeState state;
 
-    public Card offer;
+    public int offerIndex;
+    public int reqIndex;
     public bool agreement; // did the other player agree to trade?
+    public int target; // target of the trade
 
     void Start()
     {
@@ -32,7 +34,7 @@ public class TradeManager : MonoBehaviour
         TradeExporter te = importer.GetComponent<TradeExporter>();
 
         // Get stuff from the importer.
-        inputCards = te.cards;
+        cards = te.cards;
         aceCheck = te.aceCheck;
         kingCheck = te.kingCheck;
 
@@ -48,7 +50,7 @@ public class TradeManager : MonoBehaviour
         // Check for ace and settlement, increment if settlement but not ace.
         if (state == TradeState.settlement && !aceCheck[index]) { index++; aceCheck[index] = false; }
 
-        // run this at the end.
+        // manage states
         TradeState ts = state;
         if (kingCheck[index]) { OnAccept(); index++; } // if player has king, skip their settlement state and move on.
         else { if (ts == TradeState.offer) { state = TradeState.settlement; } }
@@ -57,7 +59,14 @@ public class TradeManager : MonoBehaviour
 
     void OnAccept()
     {
-        Debug.Log("This isn't implemented!!!");
+        // get the cards
+        Card[,] tempCards = cards;
+        Card offer = tempCards[index, offerIndex];
+        Card req = tempCards[target, reqIndex];
+
+        // swap the cards
+        tempCards[index, offerIndex] = req;
+        tempCards[target, reqIndex] = offer;
     }
 
     void OnNewTurn()
