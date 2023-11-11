@@ -187,4 +187,17 @@ public class Card : MonoBehaviour
         display.sprite = face;
     }
 
+    //accessor method start here
+
+    //accessor method for value
+    public int getValue()
+    {
+        return value;
+    }
+
+    //accessor method for suit
+    public string getSuit()
+    {
+        return suit;
+    }
 }
