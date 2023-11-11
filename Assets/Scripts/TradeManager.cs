@@ -64,10 +64,11 @@ public class TradeManager : MonoBehaviour
     void OnAccept()
     {
         // get the cards
-        Card[,] tempCards = cards;
-        Card offer = tempCards[index, offerIndex];
-        Card req = tempCards[target, reqIndex];
+        Card?[,] tempCards = cards;
+        Card? offer = tempCards[index, offerIndex];
+        Card? req = tempCards[target, reqIndex];
 
+        if (req == null || offer == null) { throw new NullReferenceException("Somehow, either the requested or offered card was null. This wrong."); }
         // swap the cards
         tempCards[index, offerIndex] = req;
         tempCards[target, reqIndex] = offer;
