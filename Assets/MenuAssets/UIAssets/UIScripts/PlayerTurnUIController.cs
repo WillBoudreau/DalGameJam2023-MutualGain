@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KoalsUIScript : MonoBehaviour
+public class PlayerTurnUIController : MonoBehaviour
 {
     public float buttonDelay = 0.5f;
     public GameObject TurnUI;
