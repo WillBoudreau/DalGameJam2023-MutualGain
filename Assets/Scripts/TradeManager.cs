@@ -75,7 +75,7 @@ public class TradeManager : MonoBehaviour
         Card?[,] tempCards = cards;
         Card? offer = tempCards[index, offerIndex];
         Card? req = tempCards[target, reqIndex];
-        tradeLogs[tradeID] = new TradeLog(tempCards, offer, req);
+        tradeLogs[tradeID] = new TradeLog(tempCards, offer, req, index, offerIndex, target, reqIndex);
 
 
         if (req == null || offer == null) { throw new NullReferenceException("Somehow, either the requested or offered card was null. This wrong."); }
