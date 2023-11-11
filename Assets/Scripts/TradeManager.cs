@@ -19,7 +19,6 @@ public class TradeManager : MonoBehaviour
 
     public int players = 4;
     public Card?[,] cards; // dim 0 shall represent players, dim 1 shall represent their stock.
-    public Card?[,] newCards; // cards after trading, in case of queen.
     public bool[] aceCheck;
     public bool[] kingCheck;
     public bool[] queenCheck;
@@ -35,6 +34,7 @@ public class TradeManager : MonoBehaviour
     public int reqIndex;
     public bool agreement; // did the other player agree to trade?
     public int target; // target of the trade
+    public int vetoIndex;
 
     void Start()
     {
@@ -84,8 +84,22 @@ public class TradeManager : MonoBehaviour
         tempCards[index, offerIndex] = req;
         tempCards[target, reqIndex] = offer;
 
-        newCards = tempCards;
+        // write the cards
+        cards = tempCards;
         tradeID++;
+    }
+
+    void OnVeto()
+    {
+        // get the current cards
+        Card?[,]tempCards = cards;
+        TradeLog log = tradeLogs[vetoIndex];
+
+        tempCards[log.index, log.offerIndex] = log.offer;
+        tempCards[log.target, log.reqIndex] = log.req;
+
+        // write the new cards
+        cards = tempCards;
     }
 
     void OnNewTurn()
