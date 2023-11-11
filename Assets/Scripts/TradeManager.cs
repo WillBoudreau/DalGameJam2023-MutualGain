@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum TradeState
@@ -69,6 +67,7 @@ public class TradeManager : MonoBehaviour
         Card? req = tempCards[target, reqIndex];
 
         if (req == null || offer == null) { throw new NullReferenceException("Somehow, either the requested or offered card was null. This wrong."); }
+
         // swap the cards
         tempCards[index, offerIndex] = req;
         tempCards[target, reqIndex] = offer;
