@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System;
 using UnityEngine;
 
@@ -14,6 +15,9 @@ public class TradeManager : MonoBehaviour
     public string importerName;
     GameObject importer;
 
+    TradeLog[] tradeLogs;
+
+    public int players = 4;
     public Card?[,] cards; // dim 0 shall represent players, dim 1 shall represent their stock.
     public Card?[,] newCards; // cards after trading, in case of queen.
     public bool[] aceCheck;
@@ -24,6 +28,7 @@ public class TradeManager : MonoBehaviour
 
     // increment when turn increase
     public int index = 0;
+    public int tradeID = 0;
     public TradeState state;
 
     public int offerIndex;
@@ -33,6 +38,9 @@ public class TradeManager : MonoBehaviour
 
     void Start()
     {
+        // Setup tradelog things
+        tradeLogs = new TradeLog[players * 2]; // In case of aces, we multiply by 2.
+
         // Get the importer.
         importer = GameObject.Find(importerName);
         TradeExporter te = importer.GetComponent<TradeExporter>();
@@ -67,6 +75,8 @@ public class TradeManager : MonoBehaviour
         Card?[,] tempCards = cards;
         Card? offer = tempCards[index, offerIndex];
         Card? req = tempCards[target, reqIndex];
+        tradeLogs[tradeID] = new TradeLog(tempCards, offer, req);
+
 
         if (req == null || offer == null) { throw new NullReferenceException("Somehow, either the requested or offered card was null. This wrong."); }
 
@@ -74,7 +84,8 @@ public class TradeManager : MonoBehaviour
         tempCards[index, offerIndex] = req;
         tempCards[target, reqIndex] = offer;
 
-        cards = tempCards;
+        newCards = tempCards;
+        tradeID++;
     }
 
     void OnNewTurn()
