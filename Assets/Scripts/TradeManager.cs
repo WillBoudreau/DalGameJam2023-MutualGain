@@ -19,7 +19,7 @@ public class TradeManager : MonoBehaviour
     public bool[] jokerCheck;
 
     // increment when turn increase
-    public int index;
+    public int index = 0;
     public TradeState state;
 
     public int offerIndex;
