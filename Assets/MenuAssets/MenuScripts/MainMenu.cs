@@ -5,13 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public int SceneBuildIndex;
+    public int sceneBuildIndex;
+    public float startDelay = 0.5f;
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneBuildIndex);
+        StartCoroutine(NextScene());
     }
     public void QuitGame()
     {
+        StartCoroutine(EndGame());
+    }
+    private IEnumerator NextScene()
+    {
+        yield return new WaitForSeconds(startDelay);
+        SceneManager.LoadScene(sceneBuildIndex);
+    }
+    private IEnumerator EndGame()
+    {
+        yield return new WaitForSeconds(startDelay);
         Application.Quit();
     }
 }
+

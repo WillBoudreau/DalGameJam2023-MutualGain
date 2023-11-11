@@ -1205,7 +1205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e64264e9a94461649bb52d91fdcd5d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneBuildIndex: 0
+  sceneBuildIndex: 0
+  startDelay: 0.5
 --- !u!1 &1094188129
 GameObject:
   m_ObjectHideFlags: 0
