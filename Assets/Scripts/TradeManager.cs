@@ -4,7 +4,9 @@ using UnityEngine;
 public enum TradeState
 {
     offer,
-    settlement
+    settlement,
+    counterOffer, // Idk if/when these'll be used, but just in case.
+    counterSettlement
 }
 
 public class TradeManager : MonoBehaviour
