@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    //pbject reference
-    [SerializeField] GameObject prefab;
+    //object reference
+    [SerializeField] private GameObject prefab;
+    [SerializeField] private GameObject Deck;
 
     //creating lists for cards
     [SerializeField] private List<GameObject> deck = new List<GameObject>();
@@ -36,17 +37,21 @@ public class GameManager : MonoBehaviour
         attribution.Add(Instantiate(prefab));
         attribution[3].GetComponent<Card>().SetCard(40);
 
-        //adding players to player list
+        //adding players to player list (naming is for clarity in scene view
         pList.Add(new GameObject());
+        pList[0].name = "Player1";
         pList[0].AddComponent<Player>();
 
         pList.Add(new GameObject());
+        pList[1].name = "Player2";
         pList[1].AddComponent<Player>();
 
         pList.Add(new GameObject());
+        pList[2].name = "Player3";
         pList[2].AddComponent<Player>();
 
         pList.Add(new GameObject());
+        pList[3].name = "Player4";
         pList[3].AddComponent<Player>();
 
         int j = 1;
@@ -56,6 +61,7 @@ public class GameManager : MonoBehaviour
         {
             int rand = Random.Range(0, attribution.Count); //generating random number to assign suit
             player.GetComponent<Player>().setPlayer(j, attribution[rand]); //draws one card from the attribution hand 
+            attribution[rand].transform.parent = player.transform; //sets the card as a child of the player for visual clarity in scene menu
             attribution.Remove(attribution[rand]); //removes card for next draw
 
             j++;
@@ -74,6 +80,7 @@ public class GameManager : MonoBehaviour
             card.GetComponent<Card>().SetCard(i);
             
             deck.Add(card); //add card to the deck
+            card.transform.parent = Deck.transform; //sets cards as a child of the Deck object for visual clarity in scene menu
         }
     }
 
