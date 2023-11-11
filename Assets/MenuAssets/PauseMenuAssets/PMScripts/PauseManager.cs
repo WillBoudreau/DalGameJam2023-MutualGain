@@ -36,11 +36,11 @@ public class PauseManager : MonoBehaviour
     }
     public void ResumeGame()
     {
-        Time.timeScale = 1f;
         StartCoroutine(Resume());
     }
     private IEnumerator Resume()
     {
+        Time.timeScale = 1f;
         yield return new WaitForSeconds(WaitTime);
         GameIsPaused = false;
         PauseMenuUI.SetActive(false);
