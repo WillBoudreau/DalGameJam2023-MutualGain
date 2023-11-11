@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,33 +6,26 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     //Variables
-    int playerNumber;
-    int score;
-    string suit;
+    [SerializeField] private int playerNumber;
+    [SerializeField] private int score;
+    [SerializeField] private string suit;
 
     //player "hand"
-    public List<Card> stock;
+    public List<GameObject> stock = new List<GameObject>();
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+    public void start()
     {
         
     }
 
     //method called to set values of a player object
-    public void setPlayer(int pNum, Card card)
+    public void setPlayer(int pNum, GameObject card)
     {
         //sets the player number
         playerNumber = pNum;
 
         //gets the player's suit
-        suit = card.getSuit();
+        suit = card.GetComponent<Card>().getSuit();
 
         //gives player thier first card
         stock.Add(card);
@@ -43,11 +37,11 @@ public class Player : MonoBehaviour
         int value = 0;
 
         //going through stock to calculate 
-        foreach(Card card in stock)
+        foreach(GameObject card in stock)
         {
-            if (card.getSuit() == suit)
+            if (card.GetComponent<Card>().getSuit() == suit)
             {
-                value += card.getValue();
+                value += card.GetComponent<Card>().getValue();
             }
         }
 

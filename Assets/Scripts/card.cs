@@ -21,26 +21,16 @@ public class Card : MonoBehaviour
     //temp variables
     public int pNum = 1;
 
-    // Start is called before the first frame update
-    void Start()
+    //players first frame after creation
+    private void Start()
     {
-        setCard(id);
-        SetCardBack(pNum);
         setImage();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    public void setCard(int ID)
-    {
+    //sudo contructor method for card
+    public void SetCard(int ID) {
         //set ID to be remembered
         id = ID;
-
-
 
         //in Spades group
         if (ID >= 1 && ID <= 13)
