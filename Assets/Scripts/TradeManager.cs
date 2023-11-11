@@ -67,6 +67,8 @@ public class TradeManager : MonoBehaviour
         // swap the cards
         tempCards[index, offerIndex] = req;
         tempCards[target, reqIndex] = offer;
+
+        cards = tempCards;
     }
 
     void OnNewTurn()
