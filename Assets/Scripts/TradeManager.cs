@@ -1,11 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Scripts;
+using System;
 using UnityEngine;
 
 public enum TradeState
 {
     offer,
-    settlement
+    settlement,
+    counterOffer, // Idk if/when these'll be used, but just in case.
+    counterSettlement
 }
 
 public class TradeManager : MonoBehaviour
@@ -13,22 +15,32 @@ public class TradeManager : MonoBehaviour
     public string importerName;
     GameObject importer;
 
-    public Card[,] cards; // dim 0 shall represent players, dim 1 shall represent their stock.
+    TradeLog[] tradeLogs;
+
+    public int players = 4;
+    public Card?[,] cards; // dim 0 shall represent players, dim 1 shall represent their stock.
     public bool[] aceCheck;
     public bool[] kingCheck;
+    public bool[] queenCheck;
+    public bool[] jackCheck;
     public bool[] jokerCheck;
 
     // increment when turn increase
     public int index = 0;
+    public int tradeID = 0;
     public TradeState state;
 
     public int offerIndex;
     public int reqIndex;
     public bool agreement; // did the other player agree to trade?
     public int target; // target of the trade
+    public int vetoIndex;
 
     void Start()
     {
+        // Setup tradelog things
+        tradeLogs = new TradeLog[players * 2]; // In case of aces, we multiply by 2.
+
         // Get the importer.
         importer = GameObject.Find(importerName);
         TradeExporter te = importer.GetComponent<TradeExporter>();
@@ -60,14 +72,33 @@ public class TradeManager : MonoBehaviour
     void OnAccept()
     {
         // get the cards
-        Card[,] tempCards = cards;
-        Card offer = tempCards[index, offerIndex];
-        Card req = tempCards[target, reqIndex];
+        Card?[,] tempCards = cards;
+        Card? offer = tempCards[index, offerIndex];
+        Card? req = tempCards[target, reqIndex];
+        tradeLogs[tradeID] = new TradeLog(tempCards, offer, req, index, offerIndex, target, reqIndex);
+
+
+        if (req == null || offer == null) { throw new NullReferenceException("Somehow, either the requested or offered card was null. This wrong."); }
 
         // swap the cards
         tempCards[index, offerIndex] = req;
         tempCards[target, reqIndex] = offer;
 
+        // write the cards
+        cards = tempCards;
+        tradeID++;
+    }
+
+    void OnVeto()
+    {
+        // get the current cards
+        Card?[,]tempCards = cards;
+        TradeLog log = tradeLogs[vetoIndex];
+
+        tempCards[log.index, log.offerIndex] = log.offer;
+        tempCards[log.target, log.reqIndex] = log.req;
+
+        // write the new cards
         cards = tempCards;
     }
 
