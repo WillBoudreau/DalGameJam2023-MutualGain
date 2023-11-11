@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,9 +14,12 @@ public class TradeManager : MonoBehaviour
     public string importerName;
     GameObject importer;
 
-    public Card[,] cards; // dim 0 shall represent players, dim 1 shall represent their stock.
+    public Card?[,] cards; // dim 0 shall represent players, dim 1 shall represent their stock.
+    public Card?[,] newCards; // cards after trading, in case of queen.
     public bool[] aceCheck;
     public bool[] kingCheck;
+    public bool[] queenCheck;
+    public bool[] jackCheck;
     public bool[] jokerCheck;
 
     // increment when turn increase
