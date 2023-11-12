@@ -53,7 +53,7 @@ public class TradeManager : MonoBehaviour
 
         // check for joker
         bool orGate = false;
-        foreach(bool b in jokerCheck)
+        foreach (bool b in jokerCheck)
         {
             if (b) { orGate = true; }
         }
@@ -99,7 +99,7 @@ public class TradeManager : MonoBehaviour
     void OnVeto()
     {
         // get the current cards
-        Card?[,]tempCards = cards;
+        Card?[,] tempCards = cards;
         TradeLog log = tradeLogs[vetoIndex];
 
         tempCards[log.index, log.offerIndex] = log.offer;
