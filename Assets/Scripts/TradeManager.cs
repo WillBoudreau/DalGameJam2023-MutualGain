@@ -52,6 +52,12 @@ public class TradeManager : MonoBehaviour
         kingCheck = te.kingCheck;
 
         // check for joker
+        bool orGate = false;
+        foreach(bool b in jokerCheck)
+        {
+            if (b) { orGate = true; }
+        }
+        if (orGate) { DoJokerThings(); }
     }
 
     // name not set in stone, this is run when a card is selected.
