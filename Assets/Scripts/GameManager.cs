@@ -228,6 +228,12 @@ public class GameManager : MonoBehaviour
         tradeRoundUI.SetActive(true);
         playerTurnScreen.SetActive(false);
         //needs to be connected to trade
+
+        // Get the exporter.
+        GameObject exporter = GameObject.Find("TradeExporter");
+        TradeExporter te = exporter.GetComponent<TradeExporter>();
+
+        // Somehow we need to give exporter the cards, and the bools
     }
 
     // Method that toggles the screen hider (hide player hand between turns)
@@ -279,6 +285,14 @@ public class GameManager : MonoBehaviour
     // debug End trade method to test UI and Turn loop. 
     public void EndTrade()
     {
+        // Get the exporter.
+        GameObject exporter = GameObject.Find("TradeExporter");
+        TradeExporter te = exporter.GetComponent<TradeExporter>();
+        // Retrieve the cards.
+        GameObject[,] cards = te.cards;
+
+        // We need to send each player their exported cards.
+
         // what would be the end of all trading. 
         StartRound();
     }
