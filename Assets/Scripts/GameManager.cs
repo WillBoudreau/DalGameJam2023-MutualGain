@@ -6,6 +6,13 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    // Reference for table
+    public GameObject Table;
+    // Transforms of all player locations
+    public Transform Player1Location;
+    public Transform Player2Location;
+    public Transform Player3Location;
+    public Transform Player4Location;
     //UI Text References for turn counters
     public TextMeshProUGUI roundCounterUI;
     public TextMeshProUGUI playersTurnUI;
@@ -41,6 +48,7 @@ public class GameManager : MonoBehaviour
     private bool lastRound = false;
     private int roundNumber =0;
     private int turnCounter;
+    public bool gameStarted = false;
 
     // Start is called before the first frame update
     void Start()
@@ -113,7 +121,9 @@ public class GameManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { 
+    {
+        if(gameStarted == true)
+        {SetTableLocation();}
     }
 
     // Method for Drawing a card
@@ -149,6 +159,8 @@ public class GameManager : MonoBehaviour
     //Method that starts the round (called on end of trade)
     public void StartRound()
     {
+        if(gameStarted == false)
+        {gameStarted = true;}
         // makes sure the right UI elements are active at the start of each round
         if(playerTurnScreen.activeSelf == false)
         {
@@ -159,9 +171,7 @@ public class GameManager : MonoBehaviour
             }
         }
         if(tradeRoundUI.activeSelf == true)
-        {
-            tradeRoundUI.SetActive(false);
-        }
+        {tradeRoundUI.SetActive(false);}
         roundNumber++; //sets the round number
         SetTurnOrder(roundNumber); //sets turn order
         turnCounter = 0; //clears turn counter from last round (or sets it for first round)
@@ -271,5 +281,28 @@ public class GameManager : MonoBehaviour
     {
         // what would be the end of all trading. 
         StartRound();
+    }
+    private void SetTableLocation()
+    {
+        if(turnOrder[turnCounter-1].name == "Player 1")
+        {
+            Table.transform.position = Player1Location.position;
+            Table.transform.rotation = Player1Location.rotation;
+        }
+        if(turnOrder[turnCounter-1].name == "Player 2")
+        {
+            Table.transform.position = Player2Location.position;
+            Table.transform.rotation = Player2Location.rotation;
+        }
+        if(turnOrder[turnCounter-1].name == "Player 3")
+        {
+            Table.transform.position = Player3Location.position;
+            Table.transform.rotation = Player3Location.rotation;
+        }
+        if(turnOrder[turnCounter-1].name == "Player 4")
+        {
+            Table.transform.position = Player4Location.position;
+            Table.transform.rotation = Player4Location.rotation;
+        }
     }
 }
