@@ -24,7 +24,7 @@ public class Card : MonoBehaviour
     //players first frame after creation
     private void Start()
     {
-        setImage();
+        SetImage();
     }
 
     //sudo contructor method for card
@@ -150,7 +150,7 @@ public class Card : MonoBehaviour
     }
 
     //function that flips the card
-    public void flip()
+    public void Flip()
     {
         //sets the image for the card
         if (faceUp)
@@ -172,7 +172,7 @@ public class Card : MonoBehaviour
     }
 
     //function that sets initial image
-    private void setImage()
+    private void SetImage()
     {
         display.sprite = face;
     }
@@ -180,13 +180,13 @@ public class Card : MonoBehaviour
     //accessor method start here
 
     //accessor method for value
-    public int getValue()
+    public int GetValue()
     {
         return value;
     }
 
     //accessor method for suit
-    public string getSuit()
+    public string GetSuit()
     {
         return suit;
     }

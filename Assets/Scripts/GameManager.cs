@@ -1,3 +1,4 @@
+using OpenCover.Framework.Model;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
     //object reference
     [SerializeField] private GameObject prefab;
     [SerializeField] private GameObject Deck;
+    [SerializeField] private GameObject ScreenHider;
 
     //creating lists for cards
     [SerializeField] private List<GameObject> deck = new List<GameObject>();
@@ -15,6 +17,14 @@ public class GameManager : MonoBehaviour
 
     //players and list
     [SerializeField] private List<GameObject> pList = new List<GameObject>(); //List of players
+    [SerializeField] private List<GameObject> turnOrder = new List<GameObject>(); //List for player turn order
+
+    //initialization for trade matrix
+
+    //variables
+    private bool lastRound = false;
+    private int roundNumber =0;
+    private int turnCounter;
 
     // Start is called before the first frame update
     void Start()
@@ -60,7 +70,7 @@ public class GameManager : MonoBehaviour
         foreach (GameObject player in pList) 
         {
             int rand = Random.Range(0, attribution.Count); //generating random number to assign suit
-            player.GetComponent<Player>().setPlayer(j, attribution[rand]); //draws one card from the attribution hand 
+            player.GetComponent<Player>().SetPlayer(j, attribution[rand]); //draws one card from the attribution hand 
             attribution[rand].transform.parent = player.transform; //sets the card as a child of the player for visual clarity in scene menu
             attribution.Remove(attribution[rand]); //removes card for next draw
 
@@ -90,4 +100,104 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+    // Method for Drawing a card
+    public void Draw(GameObject player)
+    {
+        if (deck.Count > 0)
+        {
+            int rand = Random.Range(0, deck.Count); //getting index for random card
+            player.GetComponent<Player>().AddCard(deck[rand]); //this adds to the player's list inventory
+            deck[rand].transform.parent = player.transform; //set player as parent of card
+            deck.Remove(deck[rand]); //removes card from deck
+        }
+
+        if(deck.Count == 0) // check to see if deck is now empty
+        {
+            lastRound = true;
+        }   
+    }
+
+    //Method for setting turn order. When moving through turn order, players will be removed from the turn order list
+    private void SetTurnOrder(int round)
+    {
+        //clears previous turn order
+        foreach (GameObject player in turnOrder)
+        {
+            turnOrder.Remove(player);
+        }
+
+        //sets new turn order
+        turnOrder.Add(pList[(round-1) % 4]);
+        turnOrder.Add(pList[(round) % 4]);
+        turnOrder.Add(pList[(round+1) % 4]);
+        turnOrder.Add(pList[(round+2) % 4]);
+    }
+
+    //Method that starts the round (called on end of trade)
+    public void StartRound()
+    {
+        roundNumber++; //sets the round nubmer
+        SetTurnOrder(roundNumber); //sets turn order
+        turnCounter = 0; //clears turn counter from last round (or sets it for first round)
+        StartTurn(turnOrder[turnCounter]); //starts turn of first player in turn order
+    }
+
+    //Method to start a player's turn
+    public void StartTurn(GameObject player)
+    {
+        ToggleScreenHide(); //hides information until player pushes button
+        turnCounter++;
+        Draw(turnOrder[turnCounter - 1]); //draws a card for the player who's turn it is
+        //needs to be connected to UI
+    }
+
+    //Method for player to take a draw action 
+    public void DrawAction()
+    {
+        Draw(turnOrder[turnCounter-1]); //draws a card for the player who's turn it is
+        //needs to be connected to UI
+    }
+
+    //Method for player to take a trade action
+    public void TradeAction()
+    {
+        //needs to make trade matrix (implement when trade is available)
+    }
+
+    //Method to end turn
+    public void EndTurn()
+    {
+        if (turnCounter < 4)
+        {
+            StartTurn(turnOrder[turnCounter]); //calls the turn of the next player
+        }
+        else
+        {
+            StartTrade();
+        }
+        
+    }
+
+    public void StartTrade()
+    {
+        //needs to be connected to trade
+    }
+
+    // Method that toggles the screen hider (hide player hand between turns)
+    public void ToggleScreenHide()
+    {
+        if (ScreenHider.activeSelf == true)
+        {
+            ScreenHider.SetActive(false);
+        }
+        else
+        {
+            ScreenHider.SetActive(true);
+        }
+    }
+
+
+
+
 }

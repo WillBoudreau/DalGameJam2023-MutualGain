@@ -19,29 +19,35 @@ public class Player : MonoBehaviour
     }
 
     //method called to set values of a player object
-    public void setPlayer(int pNum, GameObject card)
+    public void SetPlayer(int pNum, GameObject card)
     {
         //sets the player number
         playerNumber = pNum;
 
         //gets the player's suit
-        suit = card.GetComponent<Card>().getSuit();
+        suit = card.GetComponent<Card>().GetSuit();
 
         //gives player thier first card
         stock.Add(card);
     }
 
+    //method that adds card to the player's hand
+    public void AddCard(GameObject card)
+    {
+        stock.Add(card);
+    }
+
     //Method to calculate total score of player
-    private int calcScore()
+    private int CalcScore()
     {
         int value = 0;
 
         //going through stock to calculate 
         foreach(GameObject card in stock)
         {
-            if (card.GetComponent<Card>().getSuit() == suit)
+            if (card.GetComponent<Card>().GetSuit() == suit)
             {
-                value += card.GetComponent<Card>().getValue();
+                value += card.GetComponent<Card>().GetValue();
             }
         }
 
@@ -51,7 +57,7 @@ public class Player : MonoBehaviour
     //accessor methods start here
 
     //accessor method for score
-    public int getScore()
+    public int GetScore()
     {
         return score;
     }
