@@ -1,14 +1,32 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 // This makes our list of ints that we choose from when randomizing things.
+
+int tempPlayers = 4;
+int tempTradeCardLimit = 3;
+Card[,] tempCards = new Card[4, 3];
+Card[,] newCards = new Card[4, 3];
+
+List<Card> cards = new List<Card>();
+
+foreach (Card card in tempCards)
 {
-    int tempPlayers = 4;
-    int tempTradeCardLimit;
+    cards.Add(card);
+}
 
-    List<int> ints = new List<int>();
-
-    for (int i = 0; i < tempPlayers; i++)
+for (int i = 0; i < tempPlayers; i++)
+{
+    for (int j = 0; j < tempTradeCardLimit; j++)
     {
-        ints.Add(i);
+        // randomly pick a number
+        Random r = new Random();
+        int index = r.Next(cards.Count);
+
+        // assign card and prevent it from being reused
+        newCards[i, j] = cards[index];
+        cards.Remove(cards[index]);
     }
 }
+
+// assign the new cards thing here.
