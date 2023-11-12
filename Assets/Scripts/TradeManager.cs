@@ -137,13 +137,17 @@ public class TradeManager : MonoBehaviour
                 cards.Remove(cards[index]);
             }
         }
-
-
     }
 
     void OnNewTurn()
     {
         Debug.Log("This isn't implemented!!!");
         // this is mostly going to be UI stuff, so I'm postponing this.
+    }
+
+    void ExportCards()
+    {
+        TradeExporter te = importer.GetComponent<TradeExporter>();
+        te.cards = cards;
     }
 }
