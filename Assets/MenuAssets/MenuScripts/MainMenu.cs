@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public int sceneBuildIndex;
-    public float startDelay = 0.5f;
+    public float startDelay = 0.3f;
     public void PlayGame()
     {
         StartCoroutine(NextScene());
