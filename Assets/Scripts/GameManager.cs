@@ -1,4 +1,3 @@
-using OpenCover.Framework.Model;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -114,10 +113,7 @@ public class GameManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        SetUICounterText(); // Test Round counter Text
-        SetGameStartText(); // Sets Starting test
-        SetNextTurnText(); // Sets text prompt for next player
+    { 
     }
 
     // Method for Drawing a card
@@ -183,6 +179,8 @@ public class GameManager : MonoBehaviour
         }
         ToggleScreenHide(); //hides information until player pushes button
         turnCounter++;
+        SetNextTurnText(); // Sets text prompt for next player
+        SetUICounterText(); // Test Round counter Text
         Draw(turnOrder[turnCounter - 1]); //draws a card for the player who's turn it is
         //needs to be connected to UI
     }
@@ -205,6 +203,7 @@ public class GameManager : MonoBehaviour
     {
         if (turnCounter < 4)
         {
+            SetNextTurnText(); // Sets text prompt for next player
             StartTurn(turnOrder[turnCounter]); //calls the turn of the next player
         }
         else
