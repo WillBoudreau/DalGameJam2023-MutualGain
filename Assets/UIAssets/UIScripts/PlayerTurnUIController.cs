@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerTurnUIController : MonoBehaviour
 {
-    public float buttonDelay = 0.5f;
+    public float buttonDelay = 0.3f;
     public GameObject TurnUI;
     public GameObject TradeMenu;
     public void SetTrade()
