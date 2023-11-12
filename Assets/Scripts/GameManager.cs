@@ -3,9 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    //UI Text References for turn counters
+    public TextMeshProUGUI turnCounterUI;
+    public TextMeshProUGUI playersTurnUI;
+    private string turnCounterText;
+    private string playersTurnText;
     //object reference
     [SerializeField] private GameObject prefab;
     [SerializeField] private GameObject Deck;
@@ -196,8 +202,18 @@ public class GameManager : MonoBehaviour
             ScreenHider.SetActive(true);
         }
     }
-
-
-
-
+    private void SetUICounterText()
+    {
+        if(playersTurnUI == null || turnCounterUI == null)
+        {
+            return;
+        }
+        else
+        {
+            playersTurnText = string.Format("Player {0}'s turn", turnOrder);
+            turnCounterText = string.Format("Turn: {0}", turnCounter);
+            playersTurnUI.text = playersTurnText;
+            turnCounterUI.text = turnCounterText;
+        }
+    }
 }
