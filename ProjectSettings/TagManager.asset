@@ -4,9 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - UITrade
-  - UIAction
-  - UIBasic
+  - TurnCount
+  - PlayerTurn
   layers:
   - Default
   - TransparentFX

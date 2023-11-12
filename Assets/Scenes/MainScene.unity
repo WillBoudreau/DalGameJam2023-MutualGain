@@ -1440,7 +1440,7 @@ GameObject:
   - component: {fileID: 511977835}
   m_Layer: 0
   m_Name: TurnUI
-  m_TagString: UIBasic
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2717,7 +2717,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Player {0}'s turn
+  m_text: PlayerDebug
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3268,7 +3268,7 @@ GameObject:
   - component: {fileID: 1029004560}
   m_Layer: 0
   m_Name: TradeMenu
-  m_TagString: UITrade
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5689,8 +5689,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 350, y: 250}
-  m_SizeDelta: {x: 144.3124, y: 51.0789}
+  m_AnchoredPosition: {x: 381.12262, y: 248.4372}
+  m_SizeDelta: {x: 206.5576, y: 54.2045}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1471798290
 MonoBehaviour:
@@ -5712,7 +5712,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Turn: {0}'
+  m_text: TrunDebug
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
