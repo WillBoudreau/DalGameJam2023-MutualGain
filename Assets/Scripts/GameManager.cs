@@ -160,6 +160,10 @@ public class GameManager : MonoBehaviour
         if(playerTurnScreen.activeSelf == false)
         {
             playerTurnScreen.SetActive(true);
+            if(turnUI.activeSelf == false)
+            {
+                turnUI.SetActive(true);
+            }
         }
         if(tradeRoundUI.activeSelf == true)
         {
