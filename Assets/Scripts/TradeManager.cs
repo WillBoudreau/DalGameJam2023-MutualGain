@@ -37,7 +37,7 @@ public class TradeManager : MonoBehaviour
     public int target; // target of the trade
     public int vetoIndex;
 
-    void Start()
+    void OnAwake()
     {
         // Setup tradelog things
         tradeLogs = new TradeLog[players * 2]; // In case of aces, we multiply by 2.
