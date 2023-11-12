@@ -1,5 +1,6 @@
 using Assets.Scripts;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum TradeState
@@ -100,6 +101,35 @@ public class TradeManager : MonoBehaviour
 
         // write the new cards
         cards = tempCards;
+    }
+
+    void DoJokerThings()
+    {
+        Card[,] tempCards = new Card[4, 3];
+        Card[,] newCards = new Card[4, 3];
+
+        List<Card> cards = new List<Card>();
+
+        foreach (Card card in tempCards)
+        {
+            cards.Add(card);
+        }
+
+        for (int i = 0; i < players; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                // randomly pick a number
+                System.Random r = new System.Random();
+                int index = r.Next(cards.Count);
+
+                // assign card and prevent it from being reused
+                newCards[i, j] = cards[index];
+                cards.Remove(cards[index]);
+            }
+        }
+
+
     }
 
     void OnNewTurn()
