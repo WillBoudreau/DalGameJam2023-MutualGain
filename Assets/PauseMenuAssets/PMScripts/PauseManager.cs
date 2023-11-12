@@ -9,7 +9,7 @@ public class PauseManager : MonoBehaviour
     // Start is called before the first frame update
     public GameObject PauseMenuUI;
     public GameObject GameUI;
-    private float WaitTime = 0.5f;
+    private float WaitTime = 0.3f;
     public void EndGame()
     {
         Debug.Log("You pressed quit");
