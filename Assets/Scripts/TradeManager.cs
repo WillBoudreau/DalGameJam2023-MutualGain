@@ -50,7 +50,7 @@ public class TradeManager : MonoBehaviour
         cards = te.cards;
         aceCheck = te.aceCheck;
         kingCheck = te.kingCheck;
-        queenCheck = te.kingCheck;
+        queenCheck = te.queenCheck;
         jackCheck = te.jackCheck;
         jokerCheck = te.jokerCheck;
 

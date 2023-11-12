@@ -233,7 +233,10 @@ public class GameManager : MonoBehaviour
         GameObject exporter = GameObject.Find("TradeExporter");
         TradeExporter te = exporter.GetComponent<TradeExporter>();
 
-        // Somehow we need to give exporter the cards, and the bools
+        for (int i = 0; i < 4; i++)
+        {
+            Player p = turnOrder[i].GetComponent<Player>();
+        }
     }
 
     // Method that toggles the screen hider (hide player hand between turns)
