@@ -8,10 +8,21 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     //UI Text References for turn counters
-    public TextMeshProUGUI turnCounterUI;
+    public TextMeshProUGUI roundCounterUI;
     public TextMeshProUGUI playersTurnUI;
-    private string turnCounterText;
+    private string roundCounterText;
     private string playersTurnText;
+    // game start text screen references
+    public TextMeshProUGUI gameStartTextObject;
+    private string gameStartText;
+    // Next turn text object reference
+    public TextMeshProUGUI nextTurnTextObject;
+    private string nextTurnText;
+    // UI Game object references
+    public GameObject tradeRoundUI;
+    public GameObject playerTurnScreen;
+    public GameObject tradeMenu;
+    public GameObject turnUI;
     //object reference
     [SerializeField] private GameObject prefab;
     [SerializeField] private GameObject Deck;
@@ -55,19 +66,19 @@ public class GameManager : MonoBehaviour
 
         //adding players to player list (naming is for clarity in scene view
         pList.Add(new GameObject());
-        pList[0].name = "Player1";
+        pList[0].name = "Player 1";
         pList[0].AddComponent<Player>();
 
         pList.Add(new GameObject());
-        pList[1].name = "Player2";
+        pList[1].name = "Player 2";
         pList[1].AddComponent<Player>();
 
         pList.Add(new GameObject());
-        pList[2].name = "Player3";
+        pList[2].name = "Player 3";
         pList[2].AddComponent<Player>();
 
         pList.Add(new GameObject());
-        pList[3].name = "Player4";
+        pList[3].name = "Player 4";
         pList[3].AddComponent<Player>();
 
         int j = 1;
@@ -104,7 +115,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SetUICounterText();
+        SetUICounterText(); // Test Round counter Text
+        SetGameStartText(); // Sets Starting test
+        SetNextTurnText(); // Sets text prompt for next player
     }
 
     // Method for Drawing a card
@@ -143,6 +156,15 @@ public class GameManager : MonoBehaviour
     //Method that starts the round (called on end of trade)
     public void StartRound()
     {
+        // makes sure the right UI elements are active at the start of each round
+        if(playerTurnScreen.activeSelf == false)
+        {
+            playerTurnScreen.SetActive(true);
+        }
+        if(tradeRoundUI.activeSelf == true)
+        {
+            tradeRoundUI.SetActive(false);
+        }
         roundNumber++; //sets the round nubmer
         SetTurnOrder(roundNumber); //sets turn order
         turnCounter = 0; //clears turn counter from last round (or sets it for first round)
@@ -152,6 +174,12 @@ public class GameManager : MonoBehaviour
     //Method to start a player's turn
     public void StartTurn(GameObject player)
     {
+        // makes sure the right UI elements are active at the start of each turn
+        if(turnUI.activeSelf == false && tradeMenu.activeSelf == true)
+        {
+            turnUI.SetActive(true);
+            tradeMenu.SetActive(false);
+        }
         ToggleScreenHide(); //hides information until player pushes button
         turnCounter++;
         Draw(turnOrder[turnCounter - 1]); //draws a card for the player who's turn it is
@@ -187,6 +215,8 @@ public class GameManager : MonoBehaviour
 
     public void StartTrade()
     {
+        tradeRoundUI.SetActive(true);
+        playerTurnScreen.SetActive(false);
         //needs to be connected to trade
     }
 
@@ -202,18 +232,44 @@ public class GameManager : MonoBehaviour
             ScreenHider.SetActive(true);
         }
     }
+    // method that sets the text for the UI player turn and what round it is.
     private void SetUICounterText()
     {
-        if(playersTurnUI == null || turnCounterUI == null)
-        {
-            return;
-        }
+        if(playersTurnUI == null || roundCounterUI == null)
+        {return;}
         else
         {
-            playersTurnText = string.Format("Player {0}'s turn", turnOrder);
-            turnCounterText = string.Format("Turn: {0}", turnCounter);
+            if(turnCounter-1 < 0)
+            {
+                turnCounter = 1;
+            }
+            playersTurnText = string.Format("{0}'s turn", pList[turnCounter-1].name);
+            roundCounterText = string.Format("Round: {0}", roundNumber);
             playersTurnUI.text = playersTurnText;
-            turnCounterUI.text = turnCounterText;
+            roundCounterUI.text = roundCounterText;
         }
+    }
+    // Method that sets starting game text
+    private void SetGameStartText()
+    {
+        if(gameStartTextObject == null)
+        {return;}
+        else
+        {
+            gameStartText = "Are you ready to start the game?";
+            gameStartTextObject.text = gameStartText;
+        }
+    }
+    // method that sets next turn message appropriately 
+    private void SetNextTurnText()
+    {
+        nextTurnText = string.Format("{0} are you ready to start your turn?", pList[turnCounter-1].name);
+        nextTurnTextObject.text = nextTurnText;
+    }
+    // debug End trade method to test UI and Turn loop. 
+    public void EndTrade()
+    {
+        // what would be the end of all trading. 
+        StartRound();
     }
 }
