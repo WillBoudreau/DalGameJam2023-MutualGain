@@ -3055,7 +3055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3bedd59b5914874ba6e038dafd30d88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonDelay: 0.5
+  buttonDelay: 0.3
   TurnUI: {fileID: 511977834}
   TradeMenu: {fileID: 1029004559}
 --- !u!114 &1020171103
