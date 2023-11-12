@@ -19,7 +19,7 @@ public class TradeManager : MonoBehaviour
     TradeLog[] tradeLogs;
 
     public int players = 4;
-    public Card?[,] cards; // dim 0 shall represent players, dim 1 shall represent their stock.
+    public GameObject?[,] cards; // dim 0 shall represent players, dim 1 shall represent their stock.
     public bool[] aceCheck;
     public bool[] kingCheck;
     public bool[] queenCheck;
@@ -79,9 +79,9 @@ public class TradeManager : MonoBehaviour
     void OnAccept()
     {
         // get the cards
-        Card?[,] tempCards = cards;
-        Card? offer = tempCards[index, offerIndex];
-        Card? req = tempCards[target, reqIndex];
+        GameObject?[,] tempCards = cards;
+        GameObject? offer = tempCards[index, offerIndex];
+        GameObject? req = tempCards[target, reqIndex];
         tradeLogs[tradeID] = new TradeLog(tempCards, offer, req, index, offerIndex, target, reqIndex);
 
 
@@ -99,7 +99,7 @@ public class TradeManager : MonoBehaviour
     void OnVeto()
     {
         // get the current cards
-        Card?[,] tempCards = cards;
+        GameObject?[,] tempCards = cards;
         TradeLog log = tradeLogs[vetoIndex];
 
         tempCards[log.index, log.offerIndex] = log.offer;
@@ -111,12 +111,12 @@ public class TradeManager : MonoBehaviour
 
     void DoJokerThings()
     {
-        Card[,] tempCards = new Card[4, 3];
-        Card[,] newCards = new Card[4, 3];
+        GameObject[,] tempCards = new GameObject[4, 3];
+        GameObject[,] newCards = new GameObject[4, 3];
 
-        List<Card> cards = new List<Card>();
+        List<GameObject> cards = new List<GameObject>();
 
-        foreach (Card card in tempCards)
+        foreach (GameObject card in tempCards)
         {
             cards.Add(card);
         }
