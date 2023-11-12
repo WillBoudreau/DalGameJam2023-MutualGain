@@ -14883,6 +14883,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2246712033800525430}
   m_CullTransparentMesh: 1
+--- !u!4 &2994549904517957604
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7583380643076387266}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3178450645125253877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7521846901526133133}
+  - component: {fileID: 7049241033171966548}
+  m_Layer: 0
+  m_Name: TradeExporter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!222 &3280480375753192315
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16286,6 +16318,33 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5002621690491077473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7583380643076387266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0a6fc77622e57f42a875fbaff969475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  importerName: TradeExporter
+  players: 4
+  aceCheck: 
+  kingCheck: 
+  queenCheck: 
+  jackCheck: 
+  jokerCheck: 
+  index: 0
+  tradeID: 0
+  state: 0
+  offerIndex: 0
+  reqIndex: 0
+  agreement: 0
+  target: 0
+  vetoIndex: 0
 --- !u!114 &5758502316305275139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18420,6 +18479,55 @@ MonoBehaviour:
   GameIsPaused: 0
   PauseMenuUI: {fileID: 772005730744258603}
   GameUI: {fileID: 1521848023}
+--- !u!114 &7049241033171966548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3178450645125253877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cd886f6b6801cf4ca7ceff3631f1af8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aceCheck: 
+  kingCheck: 
+  queenCheck: 
+  jackCheck: 
+  jokerCheck: 
+--- !u!4 &7521846901526133133
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3178450645125253877}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7583380643076387266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2994549904517957604}
+  - component: {fileID: 5002621690491077473}
+  m_Layer: 0
+  m_Name: TradeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!114 &7716372963630621370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19669,3 +19777,5 @@ SceneRoots:
   - {fileID: 728575965}
   - {fileID: 1156047286}
   - {fileID: 1954497038}
+  - {fileID: 2994549904517957604}
+  - {fileID: 7521846901526133133}
