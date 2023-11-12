@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     //player "hand"
     public List<GameObject> stock = new List<GameObject>();
 
-    public void start()
+    void Start()
     {
         
     }
@@ -52,6 +52,13 @@ public class Player : MonoBehaviour
         }
 
         return value;
+    }
+
+    public GameObject GetCard(int index)
+    {
+        GameObject card = new GameObject();
+        card = stock[index];
+        return card;
     }
 
     //accessor methods start here
