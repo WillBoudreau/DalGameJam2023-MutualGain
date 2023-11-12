@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public Transform Player2Location;
     public Transform Player3Location;
     public Transform Player4Location;
+    // References for hand locations
+    public List<GameObject> stockLocations = new List<GameObject>();
     //UI Text References for turn counters
     public TextMeshProUGUI roundCounterUI;
     public TextMeshProUGUI playersTurnUI;
@@ -29,6 +31,8 @@ public class GameManager : MonoBehaviour
     public GameObject playerTurnScreen;
     public GameObject tradeMenu;
     public GameObject turnUI;
+    // Active Player hand
+    private List<GameObject> activeStock;
     //object reference
     [SerializeField] private GameObject prefab;
     [SerializeField] private GameObject Deck;
@@ -116,6 +120,10 @@ public class GameManager : MonoBehaviour
             deck.Add(card); //add card to the deck
             card.transform.parent = Deck.transform; //sets cards as a child of the Deck object for visual clarity in scene menu
         }
+        for (int i = 1; i<=26; i++)
+        {
+
+        }
     }
 
 
@@ -140,7 +148,8 @@ public class GameManager : MonoBehaviour
         if(deck.Count == 0) // check to see if deck is now empty
         {
             lastRound = true;
-        }   
+        }
+        GetHand();   
     }
 
     //Method for setting turn order. When moving through turn order, players will be removed from the turn order list
@@ -191,6 +200,7 @@ public class GameManager : MonoBehaviour
         turnCounter++;
         SetNextTurnText(); // Sets text prompt for next player
         SetUICounterText(); // Test Round counter Text
+        GetHand();
         Draw(turnOrder[turnCounter - 1]); //draws a card for the player who's turn it is
         //needs to be connected to UI
     }
@@ -303,6 +313,15 @@ public class GameManager : MonoBehaviour
         {
             Table.transform.position = Player4Location.position;
             Table.transform.rotation = Player4Location.rotation;
+        }
+    }
+    private void GetHand()
+    {
+        activeStock = turnOrder[turnCounter-1].GetComponent<Player>().stock;
+        int stockLength = activeStock.Count;
+        for(int i = 0; i < stockLength; i++)
+        {
+            activeStock[i].transform.position = stockLocations[i].transform.position;
         }
     }
 }

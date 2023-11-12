@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 2263281}
   - component: {fileID: 2263283}
   - component: {fileID: 2263282}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TradePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 27207988}
   - component: {fileID: 27207990}
   - component: {fileID: 27207989}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ActionPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -763,7 +763,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 120666405}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CardPositions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1197,7 +1197,7 @@ GameObject:
   - component: {fileID: 151150280}
   - component: {fileID: 151150282}
   - component: {fileID: 151150281}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Backgrund
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1270,7 +1270,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 178150433}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TradeRoundMenu
   m_TagString: UITrade
   m_Icon: {fileID: 0}
@@ -1552,7 +1552,7 @@ GameObject:
   - component: {fileID: 204706553}
   - component: {fileID: 204706555}
   - component: {fileID: 204706554}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GameStartText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1764,7 +1764,7 @@ GameObject:
   - component: {fileID: 232362997}
   - component: {fileID: 232362999}
   - component: {fileID: 232362998}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: 'Trader2Cards '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2667,7 +2667,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 511977835}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TurnUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3052,7 +3052,7 @@ GameObject:
   - component: {fileID: 599629923}
   - component: {fileID: 599629925}
   - component: {fileID: 599629924}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TraderText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3455,7 +3455,7 @@ GameObject:
   - component: {fileID: 688837789}
   - component: {fileID: 688837788}
   - component: {fileID: 688837787}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SceenHider(GameStart)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3581,6 +3581,33 @@ MonoBehaviour:
   Player2Location: {fileID: 970168275}
   Player3Location: {fileID: 596932731}
   Player4Location: {fileID: 2017723992}
+  stockLocations:
+  - {fileID: 4748553346436035173}
+  - {fileID: 4748553347578456658}
+  - {fileID: 4748553348177026038}
+  - {fileID: 4748553346712425524}
+  - {fileID: 4748553346374602523}
+  - {fileID: 4748553348052162824}
+  - {fileID: 4748553346984601242}
+  - {fileID: 4748553347285569660}
+  - {fileID: 4748553346287216559}
+  - {fileID: 4748553347393294772}
+  - {fileID: 4748553346661867225}
+  - {fileID: 4748553346223627033}
+  - {fileID: 4748553346517057528}
+  - {fileID: 4748553347759222135}
+  - {fileID: 4748553346518366698}
+  - {fileID: 4748553346577551904}
+  - {fileID: 4748553347479017242}
+  - {fileID: 4748553347194731215}
+  - {fileID: 4748553347007065599}
+  - {fileID: 4748553346652217851}
+  - {fileID: 4748553346291113900}
+  - {fileID: 4748553347092843520}
+  - {fileID: 4748553347625525082}
+  - {fileID: 4748553347342244535}
+  - {fileID: 4748553347813169074}
+  - {fileID: 4748553347942732170}
   roundCounterUI: {fileID: 1471798290}
   playersTurnUI: {fileID: 854129472}
   gameStartTextObject: {fileID: 204706554}
@@ -3624,7 +3651,7 @@ GameObject:
   - component: {fileID: 742835564}
   - component: {fileID: 742835563}
   - component: {fileID: 742835562}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SceenHider(NextTurn)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3725,7 +3752,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 743701040}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TradeHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3827,7 +3854,7 @@ GameObject:
   - component: {fileID: 749701856}
   - component: {fileID: 749701858}
   - component: {fileID: 749701857}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Backgrund
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4070,7 +4097,7 @@ GameObject:
   - component: {fileID: 790808846}
   - component: {fileID: 790808848}
   - component: {fileID: 790808847}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Trader3Cards
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4893,7 +4920,7 @@ GameObject:
   - component: {fileID: 854129471}
   - component: {fileID: 854129473}
   - component: {fileID: 854129472}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PlayerTurnText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6394,7 +6421,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1029004560}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TradeMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7377,7 +7404,7 @@ GameObject:
   - component: {fileID: 1191430771}
   - component: {fileID: 1191430773}
   - component: {fileID: 1191430772}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TraderText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8154,7 +8181,7 @@ GameObject:
   - component: {fileID: 1243807321}
   - component: {fileID: 1243807323}
   - component: {fileID: 1243807322}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TraderText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9605,7 +9632,7 @@ GameObject:
   - component: {fileID: 1414847709}
   - component: {fileID: 1414847708}
   - component: {fileID: 1414847707}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TradeRoundUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9989,7 +10016,7 @@ GameObject:
   - component: {fileID: 1471798289}
   - component: {fileID: 1471798291}
   - component: {fileID: 1471798290}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RoundCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10330,7 +10357,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1521848024}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GameUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10346,7 +10373,7 @@ Transform:
   m_GameObject: {fileID: 1521848023}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 383.24292, y: 290.62567, z: 6.7380524}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11333,7 +11360,7 @@ GameObject:
   - component: {fileID: 1882003486}
   - component: {fileID: 1882003488}
   - component: {fileID: 1882003487}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TradeMenuText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11674,7 +11701,7 @@ GameObject:
   - component: {fileID: 1926077004}
   - component: {fileID: 1926077006}
   - component: {fileID: 1926077005}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: NextTurnText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12200,7 +12227,7 @@ GameObject:
   - component: {fileID: 1962966680}
   - component: {fileID: 1962966682}
   - component: {fileID: 1962966681}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Action CardText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12449,7 +12476,7 @@ GameObject:
   - component: {fileID: 2027851786}
   - component: {fileID: 2027851788}
   - component: {fileID: 2027851787}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Trader1Cards
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12785,7 +12812,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2099706356}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PlayersHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12897,7 +12924,7 @@ GameObject:
   - component: {fileID: 2121794246}
   - component: {fileID: 2121794248}
   - component: {fileID: 2121794247}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TradeMenuText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
