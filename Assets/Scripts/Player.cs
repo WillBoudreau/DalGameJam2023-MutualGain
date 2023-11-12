@@ -93,6 +93,10 @@ public class Player : MonoBehaviour
                 case "Joker":
                     bools[4] = true; break;
             }
+
+            /*
+             stock.Remove(cardObj);
+             */
         }
         return temp.ToArray();
     }
