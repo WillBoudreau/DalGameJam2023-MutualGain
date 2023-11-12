@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     public Transform Player2Location;
     public Transform Player3Location;
     public Transform Player4Location;
+    // References for hand locations
+    public List<GameObject> stockLocations = new List<GameObject>();
+    public GameObject stockZone; 
     //UI Text References for turn counters
     public TextMeshProUGUI roundCounterUI;
     public TextMeshProUGUI playersTurnUI;
@@ -30,6 +33,8 @@ public class GameManager : MonoBehaviour
     public GameObject tradeMenu;
     public GameObject turnUI;
     public GameObject tradeManager;
+    // Active Player hand
+    private List<GameObject> activeStock;
     //object reference
     [SerializeField] private GameObject prefab;
     [SerializeField] private GameObject Deck;
@@ -118,7 +123,14 @@ public class GameManager : MonoBehaviour
             card.transform.parent = Deck.transform; //sets cards as a child of the Deck object for visual clarity in scene menu
         }
 
+
         tradeManager = GameObject.Find("TradeManager");
+
+        for (int i = 1; i<=26; i++)
+        {
+
+        }
+
     }
 
 
@@ -126,7 +138,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if(gameStarted == true)
-        {SetTableLocation();}
+        {
+            SetTableLocation();
+            GetHand();
+        }
     }
 
     // Method for Drawing a card
@@ -137,13 +152,13 @@ public class GameManager : MonoBehaviour
             int rand = Random.Range(0, deck.Count); //getting index for random card
             player.GetComponent<Player>().AddCard(deck[rand]); //this adds to the player's list inventory
             deck[rand].transform.parent = player.transform; //set player as parent of card
-            deck.Remove(deck[rand]); //removes card from deck
+            deck.Remove(deck[rand]); //removes card from deck 
         }
 
         if(deck.Count == 0) // check to see if deck is now empty
         {
             lastRound = true;
-        }   
+        }  
     }
 
     //Method for setting turn order. When moving through turn order, players will be removed from the turn order list
@@ -214,6 +229,7 @@ public class GameManager : MonoBehaviour
     //Method to end turn
     public void EndTurn()
     {
+        ResetHand();
         if (turnCounter < 4)
         {
             SetNextTurnText(); // Sets text prompt for next player
@@ -345,6 +361,24 @@ public class GameManager : MonoBehaviour
         {
             Table.transform.position = Player4Location.position;
             Table.transform.rotation = Player4Location.rotation;
+        }
+    }
+    private void GetHand()
+    {
+        activeStock = turnOrder[turnCounter-1].GetComponent<Player>().stock;
+        int stockLength = activeStock.Count;
+        for(int i = 0; i < stockLength; i++)
+        {
+            activeStock[i].transform.position = stockLocations[i].transform.position;
+            activeStock[i].transform.parent = stockZone.transform;
+        }
+    }
+    private void ResetHand()
+    {
+        int stockLength = activeStock.Count;
+        for(int i = 0; i < stockLength; i++)
+        {
+            activeStock[i].transform.parent = turnOrder[turnCounter-1].transform;
         }
     }
 }
