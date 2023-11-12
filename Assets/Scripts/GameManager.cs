@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
             //remove "2" cards that were already handed out
             if (i==1 || i==14 || i==27 || i==40)
             {
-                continue; //skips itteration of the for loop
+                continue; //skips iteration of the for loop
             }
             
             GameObject card = Instantiate(prefab);
@@ -165,7 +165,7 @@ public class GameManager : MonoBehaviour
         {
             tradeRoundUI.SetActive(false);
         }
-        roundNumber++; //sets the round nubmer
+        roundNumber++; //sets the round number
         SetTurnOrder(roundNumber); //sets turn order
         turnCounter = 0; //clears turn counter from last round (or sets it for first round)
         StartTurn(turnOrder[turnCounter]); //starts turn of first player in turn order
