@@ -141,10 +141,7 @@ public class GameManager : MonoBehaviour
     private void SetTurnOrder(int round)
     {
         //clears previous turn order
-        foreach (GameObject player in turnOrder)
-        {
-            turnOrder.Remove(player);
-        }
+        turnOrder.Clear();
 
         //sets new turn order
         turnOrder.Add(pList[(round-1) % 4]);
@@ -247,7 +244,7 @@ public class GameManager : MonoBehaviour
             {
                 turnCounter = 1;
             }
-            playersTurnText = string.Format("{0}'s turn", pList[turnCounter-1].name);
+            playersTurnText = string.Format("{0}'s turn", turnOrder[turnCounter-1].name);
             roundCounterText = string.Format("Round: {0}", roundNumber);
             playersTurnUI.text = playersTurnText;
             roundCounterUI.text = roundCounterText;
@@ -267,7 +264,7 @@ public class GameManager : MonoBehaviour
     // method that sets next turn message appropriately 
     private void SetNextTurnText()
     {
-        nextTurnText = string.Format("{0} are you ready to start your turn?", pList[turnCounter-1].name);
+        nextTurnText = string.Format("{0} are you ready to start your turn?", turnOrder[turnCounter-1].name);
         nextTurnTextObject.text = nextTurnText;
     }
     // debug End trade method to test UI and Turn loop. 
