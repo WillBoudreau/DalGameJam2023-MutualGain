@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        SetUICounterText();
     }
 
     // Method for Drawing a card
