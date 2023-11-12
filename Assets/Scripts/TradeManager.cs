@@ -1,5 +1,6 @@
 using Assets.Scripts;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum TradeState
@@ -36,7 +37,7 @@ public class TradeManager : MonoBehaviour
     public int target; // target of the trade
     public int vetoIndex;
 
-    void Start()
+    void OnAwake()
     {
         // Setup tradelog things
         tradeLogs = new TradeLog[players * 2]; // In case of aces, we multiply by 2.
@@ -51,6 +52,12 @@ public class TradeManager : MonoBehaviour
         kingCheck = te.kingCheck;
 
         // check for joker
+        bool orGate = false;
+        foreach (bool b in jokerCheck)
+        {
+            if (b) { orGate = true; }
+        }
+        if (orGate) { DoJokerThings(); }
     }
 
     // name not set in stone, this is run when a card is selected.
@@ -92,7 +99,7 @@ public class TradeManager : MonoBehaviour
     void OnVeto()
     {
         // get the current cards
-        Card?[,]tempCards = cards;
+        Card?[,] tempCards = cards;
         TradeLog log = tradeLogs[vetoIndex];
 
         tempCards[log.index, log.offerIndex] = log.offer;
@@ -100,6 +107,35 @@ public class TradeManager : MonoBehaviour
 
         // write the new cards
         cards = tempCards;
+    }
+
+    void DoJokerThings()
+    {
+        Card[,] tempCards = new Card[4, 3];
+        Card[,] newCards = new Card[4, 3];
+
+        List<Card> cards = new List<Card>();
+
+        foreach (Card card in tempCards)
+        {
+            cards.Add(card);
+        }
+
+        for (int i = 0; i < players; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                // randomly pick a number
+                System.Random r = new System.Random();
+                int index = r.Next(cards.Count);
+
+                // assign card and prevent it from being reused
+                newCards[i, j] = cards[index];
+                cards.Remove(cards[index]);
+            }
+        }
+
+
     }
 
     void OnNewTurn()
