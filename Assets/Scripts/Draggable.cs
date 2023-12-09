@@ -24,6 +24,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         if(card.transform.parent.name == "TradePanel")
         {
             card.transform.parent.GetComponent<OfferDropzone>().cardsForOffer -= 1;
+            eventData.pointerDrag.GetComponent<Card>().upForTrade = false;
             if(card.transform.parent.GetComponent<OfferDropzone>().cardsForOffer <= 0)
             {
                 card.transform.parent.GetComponent<OfferDropzone>().cardsForOffer = 0;

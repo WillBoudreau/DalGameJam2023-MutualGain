@@ -21,6 +21,7 @@ public class OfferDropzone : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
         if(cardsForOffer < offerCap)
         {
             eventData.pointerDrag.GetComponent<Draggable>().returnPatent = this.transform;
+            eventData.pointerDrag.GetComponent<Card>().upForTrade = true;
             cardsForOffer += 1;
         }
     }

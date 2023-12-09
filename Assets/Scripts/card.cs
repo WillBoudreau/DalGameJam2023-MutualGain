@@ -17,6 +17,7 @@ public class Card : MonoBehaviour
     public int value; //id of 0 = blank card
     public string suit, faceName;
     private bool faceUp = true;
+    public bool upForTrade;
 
     //temp variables
     public int pNum = 1;
@@ -25,6 +26,7 @@ public class Card : MonoBehaviour
     private void Start()
     {
         SetImage();
+        upForTrade = false;
     }
 
     //sudo contructor method for card
