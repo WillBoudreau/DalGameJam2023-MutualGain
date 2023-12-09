@@ -340,6 +340,16 @@ public class GameManager : MonoBehaviour
         GameObject[,] cards = te.cards;
 
         // We need to send each player their exported cards.
+        for (int i = 0; i < 4; i++)
+        {
+            Player p = turnOrder[i].GetComponent<Player>();
+            GameObject[] send = new GameObject[cards.GetLength(1)];
+            for(int j = 0; j < cards.GetLength(1); j++)
+            {
+                send[j] = cards[i, j];
+            }
+            p.ImportTradedCards(send);
+        }
 
         // what would be the end of all trading. 
         tradeManager.SetActive(false);

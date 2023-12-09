@@ -101,6 +101,14 @@ public class Player : MonoBehaviour
         return temp.ToArray();
     }
 
+    public void ImportTradedCards(GameObject[] imports)
+    {
+        foreach(GameObject card in imports)
+        {
+            stock.Add(card);
+        }
+    }
+
     public bool[] ExportTradeBools()
     {
         return bools;
