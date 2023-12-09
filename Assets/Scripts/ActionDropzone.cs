@@ -17,6 +17,7 @@ public class ActionDropzone : MonoBehaviour, IDropHandler
             {
                 eventData.pointerDrag.GetComponent<Draggable>().returnPatent = this.transform;
                 eventData.pointerDrag.GetComponent<Card>().forAction = true;
+                eventData.pointerDrag.GetComponent<Card>().upForTrade = true;
                 cardSloted = true;
             }
         }
