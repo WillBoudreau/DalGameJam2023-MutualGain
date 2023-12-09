@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour
     public Transform Player3Location;
     public Transform Player4Location;
     // References for hand location
-    public GameObject stockZone; 
+    public GameObject stockZone;
+    public GameObject tradeStockZone; 
     public int startingHandSize = 4;
     //UI Text References for turn counters
     public TextMeshProUGUI roundCounterUI;
@@ -36,7 +37,14 @@ public class GameManager : MonoBehaviour
     public GameObject turnUI;
     public GameObject tradeManager;
     // Active Player hand
-    private List<GameObject> activeStock;
+    public List<GameObject> activeStock;
+    public List<GameObject> activeTradeStock;
+    private List<GameObject> activeOffer1;
+    public List<Transform> offer1Locations;
+    private List<GameObject> activeOffer2;
+    public List<Transform> offer2Locations;
+    private List<GameObject> activeOffer3;
+    public List<Transform> offer3Locations;
     //object reference
     [SerializeField] private GameObject prefab;
     [SerializeField] private GameObject Deck;
@@ -51,11 +59,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<GameObject> turnOrder = new List<GameObject>(); //List for player turn order
 
     //initialization for trade matrix
-
+    // Get the exporter.
+    public GameObject tradeExporter;
     //variables
     private bool lastRound = false;
     private int roundNumber =0;
     private int turnCounter;
+    private int tradeTurnCounter;
     public bool gameStarted = false;
 
     // Start is called before the first frame update
@@ -254,8 +264,6 @@ public class GameManager : MonoBehaviour
         tradeRoundUI.SetActive(true);
         playerTurnScreen.SetActive(false);
         //needs to be connected to trade
-
-        // Get the exporter.
         GameObject exporter = GameObject.Find("TradeExporter");
         TradeExporter te = exporter.GetComponent<TradeExporter>();
 
@@ -271,7 +279,7 @@ public class GameManager : MonoBehaviour
         {
             Player p = turnOrder[i].GetComponent<Player>();
             GameObject[] pCards = p.ExportTradeCards();
-            for (int j = 0; j < pCards.Length; j++)
+            for (int j = 0; j < pCards.Length-1; j++)
             {
                 te.cards[i,j] = pCards[j];
             }
@@ -284,6 +292,9 @@ public class GameManager : MonoBehaviour
         }
 
         tradeManager.SetActive(true);
+        tradeTurnCounter += 1;
+        GetTradeHand();
+        GetTradeOffers();
     }
 
     // Method that toggles the screen hider (hide player hand between turns)
@@ -390,6 +401,15 @@ public class GameManager : MonoBehaviour
             activeStock[i].transform.localScale = new Vector3(0.5f,0.5f,0.5f);
         }
     }
+    private void GetTradeHand()
+    {
+        activeTradeStock = turnOrder[tradeTurnCounter-1].GetComponent<Player>().tradeStock;
+        int tradeStockLength = activeTradeStock.Count;
+        for(int i = 0; i < tradeStockLength; i++)
+        {
+            activeTradeStock[i].transform.parent = tradeStockZone.transform;
+        }
+    }
     private void ResetHand()
     {
         int stockLength = activeStock.Count;
@@ -412,5 +432,68 @@ public class GameManager : MonoBehaviour
     {
         tradePanel.GetComponent<OfferDropzone>().cardsForOffer = 0;
         actionPanel.GetComponent<ActionDropzone>().cardSloted = false;
+    }
+    private void GetTradeOffers()
+    {
+        if(turnOrder[tradeTurnCounter].name == "Player 1")
+        {
+            activeOffer1 = turnOrder[tradeTurnCounter].GetComponent<Player>().tradeStock;
+            activeOffer2 = turnOrder[tradeTurnCounter+1].GetComponent<Player>().tradeStock;
+            activeOffer3 = turnOrder[tradeTurnCounter+2].GetComponent<Player>().tradeStock;
+            activeOffer1[0].transform.parent = offer1Locations[0].transform;
+            activeOffer1[1].transform.parent = offer1Locations[1].transform;
+            activeOffer1[2].transform.parent = offer1Locations[2].transform;
+            activeOffer2[0].transform.parent = offer2Locations[0].transform;
+            activeOffer2[1].transform.parent = offer2Locations[1].transform;
+            activeOffer2[2].transform.parent = offer2Locations[2].transform;
+            activeOffer3[0].transform.parent = offer3Locations[0].transform;
+            activeOffer3[1].transform.parent = offer3Locations[1].transform;
+            activeOffer3[2].transform.parent = offer3Locations[2].transform;
+        }
+        if(turnOrder[tradeTurnCounter].name == "Player 2")
+        {
+            activeOffer1 = turnOrder[tradeTurnCounter-2].GetComponent<Player>().tradeStock;
+            activeOffer2 = turnOrder[tradeTurnCounter].GetComponent<Player>().tradeStock;
+            activeOffer3 = turnOrder[tradeTurnCounter+1].GetComponent<Player>().tradeStock;
+            activeOffer1[0].transform.parent = offer1Locations[0].transform;
+            activeOffer1[1].transform.parent = offer1Locations[1].transform;
+            activeOffer1[2].transform.parent = offer1Locations[2].transform;
+            activeOffer2[0].transform.parent = offer2Locations[0].transform;
+            activeOffer2[1].transform.parent = offer2Locations[1].transform;
+            activeOffer2[2].transform.parent = offer2Locations[2].transform;
+            activeOffer3[0].transform.parent = offer3Locations[0].transform;
+            activeOffer3[1].transform.parent = offer3Locations[1].transform;
+            activeOffer3[2].transform.parent = offer3Locations[2].transform;
+        }
+        if(turnOrder[tradeTurnCounter].name == "Player 3")
+        {
+            activeOffer1 = turnOrder[tradeTurnCounter-2].GetComponent<Player>().tradeStock;
+            activeOffer2 = turnOrder[tradeTurnCounter-1].GetComponent<Player>().tradeStock;
+            activeOffer3 = turnOrder[tradeTurnCounter+1].GetComponent<Player>().tradeStock;
+            activeOffer1[0].transform.parent = offer1Locations[0].transform;
+            activeOffer1[1].transform.parent = offer1Locations[1].transform;
+            activeOffer1[2].transform.parent = offer1Locations[2].transform;
+            activeOffer2[0].transform.parent = offer2Locations[0].transform;
+            activeOffer2[1].transform.parent = offer2Locations[1].transform;
+            activeOffer2[2].transform.parent = offer2Locations[2].transform;
+            activeOffer3[0].transform.parent = offer3Locations[0].transform;
+            activeOffer3[1].transform.parent = offer3Locations[1].transform;
+            activeOffer3[2].transform.parent = offer3Locations[2].transform;
+        }
+        if(turnOrder[tradeTurnCounter].name == "Player 4")
+        {
+            activeOffer1 = turnOrder[tradeTurnCounter-3].GetComponent<Player>().tradeStock;
+            activeOffer2 = turnOrder[tradeTurnCounter-2].GetComponent<Player>().tradeStock;
+            activeOffer3 = turnOrder[tradeTurnCounter-1].GetComponent<Player>().tradeStock;
+            activeOffer1[0].transform.parent = offer1Locations[0].transform;
+            activeOffer1[1].transform.parent = offer1Locations[1].transform;
+            activeOffer1[2].transform.parent = offer1Locations[2].transform;
+            activeOffer2[0].transform.parent = offer2Locations[0].transform;
+            activeOffer2[1].transform.parent = offer2Locations[1].transform;
+            activeOffer2[2].transform.parent = offer2Locations[2].transform;
+            activeOffer3[0].transform.parent = offer3Locations[0].transform;
+            activeOffer3[1].transform.parent = offer3Locations[1].transform;
+            activeOffer3[2].transform.parent = offer3Locations[2].transform;
+        }
     }
 }
