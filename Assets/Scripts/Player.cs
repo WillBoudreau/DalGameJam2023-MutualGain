@@ -76,6 +76,16 @@ public class Player : MonoBehaviour
 
     public GameObject[] ExportTradeCards()
     {
+        // This ensures we know what cards are up for trade;
+        foreach (GameObject card in stock)
+        {
+            Card cardComponent = card.GetComponent<Card>();
+            if (cardComponent.forAction || cardComponent.upForTrade)
+            {
+                tradeStock.Add(card);
+            }
+        }
+
         List<GameObject> temp = tradeStock;
         foreach(GameObject cardObj in temp)
         {
@@ -94,9 +104,7 @@ public class Player : MonoBehaviour
                     bools[4] = true; break;
             }
 
-            /*
-             stock.Remove(cardObj);
-             */
+             stock.Remove(cardObj);             
         }
         return temp.ToArray();
     }
