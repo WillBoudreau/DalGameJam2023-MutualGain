@@ -33,6 +33,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         if(card.transform.parent.name == "ActionPanel")
         {
             card.transform.parent.GetComponent<ActionDropzone>().cardSloted = false;
+            eventData.pointerDrag.GetComponent<Card>().forAction = true;
         }
         returnPatent = this.transform.parent;
         card.transform.SetParent(this.transform.parent.parent);

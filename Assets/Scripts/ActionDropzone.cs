@@ -16,6 +16,7 @@ public class ActionDropzone : MonoBehaviour, IDropHandler
             if(cardType == d.cardType && cardSloted != true)
             {
                 eventData.pointerDrag.GetComponent<Draggable>().returnPatent = this.transform;
+                eventData.pointerDrag.GetComponent<Card>().forAction = true;
                 cardSloted = true;
             }
         }
