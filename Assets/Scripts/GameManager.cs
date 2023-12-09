@@ -13,8 +13,7 @@ public class GameManager : MonoBehaviour
     public Transform Player2Location;
     public Transform Player3Location;
     public Transform Player4Location;
-    // References for hand locations
-    public List<GameObject> stockLocations = new List<GameObject>();
+    // References for hand location
     public GameObject stockZone; 
     //UI Text References for turn counters
     public TextMeshProUGUI roundCounterUI;
@@ -129,6 +128,7 @@ public class GameManager : MonoBehaviour
 
 
     // Update is called once per frame
+    /*
     void Update()
     {
         if(gameStarted == true)
@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour
             GetHand();
         }
     }
-
+    */
     // Method for Drawing a card
     public void Draw(GameObject player)
     {
@@ -204,13 +204,14 @@ public class GameManager : MonoBehaviour
         SetNextTurnText(); // Sets text prompt for next player
         SetUICounterText(); // Test Round counter Text
         Draw(turnOrder[turnCounter - 1]); //draws a card for the player who's turn it is
-        //needs to be connected to UI
+        GetHand();
     }
 
     //Method for player to take a draw action 
     public void DrawAction()
     {
         Draw(turnOrder[turnCounter-1]); //draws a card for the player who's turn it is
+        GetHand();
         //needs to be connected to UI
     }
 
@@ -324,9 +325,8 @@ public class GameManager : MonoBehaviour
         int stockLength = activeStock.Count;
         for(int i = 0; i < stockLength; i++)
         {
-            activeStock[i].transform.position = stockLocations[i].transform.position;
             activeStock[i].transform.parent = stockZone.transform;
-            activeStock[i].transform.localScale = stockZone.transform.localScale /2;
+            activeStock[i].transform.localScale = new Vector3(0.5f,0.5f,0.5f);
         }
     }
     private void ResetHand()
