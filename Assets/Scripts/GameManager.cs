@@ -326,6 +326,7 @@ public class GameManager : MonoBehaviour
         {
             activeStock[i].transform.position = stockLocations[i].transform.position;
             activeStock[i].transform.parent = stockZone.transform;
+            activeStock[i].transform.localScale = stockZone.transform.localScale /2;
         }
     }
     private void ResetHand()
