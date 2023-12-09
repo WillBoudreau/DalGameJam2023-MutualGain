@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public Transform Player4Location;
     // References for hand location
     public GameObject stockZone; 
+    public int startingHandSize = 4;
     //UI Text References for turn counters
     public TextMeshProUGUI roundCounterUI;
     public TextMeshProUGUI playersTurnUI;
@@ -183,6 +184,10 @@ public class GameManager : MonoBehaviour
         }
         if(tradeRoundUI.activeSelf == true)
         {tradeRoundUI.SetActive(false);}
+        if(roundNumber == 0)
+        {
+            DrawStartHand();
+        }
         roundNumber++; //sets the round number
         SetTurnOrder(roundNumber); //sets turn order
         turnCounter = 0; //clears turn counter from last round (or sets it for first round)
@@ -334,6 +339,16 @@ public class GameManager : MonoBehaviour
         for(int i = 0; i < stockLength; i++)
         {
             activeStock[i].transform.parent = turnOrder[turnCounter-1].transform;
+        }
+    }
+    private void DrawStartHand()
+    {
+        for(int i = 0; i < pList.Count; i++)
+        {
+            for(int j = 0; j < startingHandSize; j++)
+            {
+                Draw(pList[i]);
+            }
         }
     }
 }

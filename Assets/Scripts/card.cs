@@ -14,8 +14,8 @@ public class Card : MonoBehaviour
 
     //variables
     public int id = 0;
-    private int value; //id of 0 = blank card
-    private string suit, faceName;
+    public int value; //id of 0 = blank card
+    public string suit, faceName;
     private bool faceUp = true;
 
     //temp variables

@@ -8,9 +8,15 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     private Transform originalPosition;
     public Transform returnPatent;
     private GameObject card;
+    public enum CardType { Value, Ability}
+    public CardType cardType = CardType.Value;
     void Start()
     {
         card = this.gameObject;
+        if(card.GetComponent<Card>().value == 0)
+        {
+            cardType = CardType.Ability;
+        }
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -22,6 +28,10 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             {
                 card.transform.parent.GetComponent<OfferDropzone>().cardsForOffer = 0;
             }
+        }
+        if(card.transform.parent.name == "ActionPanel")
+        {
+            card.transform.parent.GetComponent<ActionDropzone>().cardSloted = false;
         }
         returnPatent = this.transform.parent;
         card.transform.SetParent(this.transform.parent.parent);
