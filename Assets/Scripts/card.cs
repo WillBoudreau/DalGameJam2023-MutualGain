@@ -192,4 +192,9 @@ public class Card : MonoBehaviour
     {
         return suit;
     }
+
+    public string GetFaceName()
+    {
+        return faceName;
+    }
 }

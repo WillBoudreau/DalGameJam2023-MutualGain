@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     public GameObject playerTurnScreen;
     public GameObject tradeMenu;
     public GameObject turnUI;
+    public GameObject tradeManager;
     // Active Player hand
     private List<GameObject> activeStock;
     //object reference
@@ -121,10 +122,15 @@ public class GameManager : MonoBehaviour
             deck.Add(card); //add card to the deck
             card.transform.parent = Deck.transform; //sets cards as a child of the Deck object for visual clarity in scene menu
         }
+
+
+        tradeManager = GameObject.Find("TradeManager");
+
         for (int i = 1; i<=26; i++)
         {
 
         }
+
     }
 
 
@@ -246,6 +252,36 @@ public class GameManager : MonoBehaviour
         tradeRoundUI.SetActive(true);
         playerTurnScreen.SetActive(false);
         //needs to be connected to trade
+
+        // Get the exporter.
+        GameObject exporter = GameObject.Find("TradeExporter");
+        TradeExporter te = exporter.GetComponent<TradeExporter>();
+
+        // Assign vars.
+        te.cards = new GameObject[4, 3];
+        te.aceCheck = new bool[4];
+        te.kingCheck = new bool[4];
+        te.queenCheck = new bool[4];
+        te.jackCheck = new bool[4];
+        te.jokerCheck = new bool[4];
+
+        for (int i = 0; i < 4; i++)
+        {
+            Player p = turnOrder[i].GetComponent<Player>();
+            GameObject[] pCards = p.ExportTradeCards();
+            for (int j = 0; j < pCards.Length; j++)
+            {
+                te.cards[i,j] = pCards[j];
+            }
+            bool[] bools = p.ExportTradeBools();
+            te.aceCheck[i] = bools[0];
+            te.kingCheck[i] = bools[1];
+            te.queenCheck[i] = bools[2];
+            te.jackCheck[i] = bools[3];
+            te.jokerCheck[i] = bools[4];
+        }
+
+        tradeManager.SetActive(true);
     }
 
     // Method that toggles the screen hider (hide player hand between turns)
@@ -297,7 +333,16 @@ public class GameManager : MonoBehaviour
     // debug End trade method to test UI and Turn loop. 
     public void EndTrade()
     {
+        // Get the exporter.
+        GameObject exporter = GameObject.Find("TradeExporter");
+        TradeExporter te = exporter.GetComponent<TradeExporter>();
+        // Retrieve the cards.
+        GameObject[,] cards = te.cards;
+
+        // We need to send each player their exported cards.
+
         // what would be the end of all trading. 
+        tradeManager.SetActive(false);
         StartRound();
     }
     private void SetTableLocation()

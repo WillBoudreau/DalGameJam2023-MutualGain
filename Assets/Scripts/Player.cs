@@ -13,6 +13,11 @@ public class Player : MonoBehaviour
     //player "hand"
     public List<GameObject> stock = new List<GameObject>();
 
+    // Trade things
+    public List<GameObject> tradeStock = new List<GameObject>();
+    public bool[] bools = new bool[5];
+
+
     void Start()
     {
         
@@ -67,5 +72,37 @@ public class Player : MonoBehaviour
     public int GetScore()
     {
         return score;
+    }
+
+    public GameObject[] ExportTradeCards()
+    {
+        List<GameObject> temp = tradeStock;
+        foreach(GameObject cardObj in temp)
+        {
+            Card card = cardObj.GetComponent<Card>();
+            switch (card.GetFaceName())
+            {
+                case "Ace":
+                    bools[0] = true; break;
+                case "King":
+                    bools[1] = true; break;
+                case "Queen":
+                    bools[2] = true;break;
+                case "Jack":
+                    bools[3] = true; break;
+                case "Joker":
+                    bools[4] = true; break;
+            }
+
+            /*
+             stock.Remove(cardObj);
+             */
+        }
+        return temp.ToArray();
+    }
+
+    public bool[] ExportTradeBools()
+    {
+        return bools;
     }
 }
