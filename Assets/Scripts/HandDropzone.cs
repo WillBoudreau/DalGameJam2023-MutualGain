@@ -7,6 +7,7 @@ public class HandDropzone : MonoBehaviour, IDropHandler
 {
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("OnDrop to + " + gameObject.name);
+        Debug.Log(eventData.pointerDrag.name +" was dropped onto " + gameObject.name);
+        eventData.pointerDrag.GetComponent<Draggable>().returnPatent = this.transform;
     }
 }

@@ -128,16 +128,15 @@ public class GameManager : MonoBehaviour
 
 
     // Update is called once per frame
-    /*
+    
     void Update()
     {
         if(gameStarted == true)
         {
             SetTableLocation();
-            GetHand();
         }
     }
-    */
+
     // Method for Drawing a card
     public void Draw(GameObject player)
     {

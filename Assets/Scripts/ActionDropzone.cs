@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ActionDropzone : MonoBehaviour
+public class ActionDropzone : MonoBehaviour, IDropHandler
 {
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("OnDrop to + " + gameObject.name);
+        Debug.Log(eventData.pointerDrag.name +" was dropped onto " + gameObject.name);
+        eventData.pointerDrag.GetComponent<Draggable>().returnPatent = this.transform;
     }
 }
