@@ -473,6 +473,8 @@ MonoBehaviour:
   value: 0
   suit: 
   faceName: 
+  upForTrade: 0
+  forAction: 0
   pNum: 1
 --- !u!114 &48084819
 MonoBehaviour:
@@ -1531,6 +1533,8 @@ MonoBehaviour:
   value: 0
   suit: 
   faceName: 
+  upForTrade: 0
+  forAction: 0
   pNum: 1
 --- !u!114 &203975448
 MonoBehaviour:
@@ -3232,7 +3236,10 @@ MonoBehaviour:
   tradeRoundUI: {fileID: 1414847705}
   playerTurnScreen: {fileID: 1020171100}
   tradeMenu: {fileID: 1029004559}
+  tradePanel: {fileID: 2263280}
+  actionPanel: {fileID: 27207987}
   turnUI: {fileID: 511977834}
+  tradeManager: {fileID: 0}
   prefab: {fileID: 4748553346717807913, guid: 708f98852e937f94dae02acb79433fdd, type: 3}
   Deck: {fileID: 1156047285}
   ScreenHider: {fileID: 742835561}
@@ -4091,6 +4098,8 @@ MonoBehaviour:
   value: 0
   suit: 
   faceName: 
+  upForTrade: 0
+  forAction: 0
   pNum: 1
 --- !u!114 &809243473
 MonoBehaviour:
@@ -4571,6 +4580,8 @@ MonoBehaviour:
   value: 0
   suit: 
   faceName: 
+  upForTrade: 0
+  forAction: 0
   pNum: 1
 --- !u!114 &861336644
 MonoBehaviour:
@@ -5530,6 +5541,8 @@ MonoBehaviour:
   value: 0
   suit: 
   faceName: 
+  upForTrade: 0
+  forAction: 0
   pNum: 1
 --- !u!114 &1005555075
 MonoBehaviour:
@@ -6496,6 +6509,8 @@ MonoBehaviour:
   value: 0
   suit: 
   faceName: 
+  upForTrade: 0
+  forAction: 0
   pNum: 1
 --- !u!114 &1085013132
 MonoBehaviour:
@@ -7064,6 +7079,8 @@ MonoBehaviour:
   value: 0
   suit: 
   faceName: 
+  upForTrade: 0
+  forAction: 0
   pNum: 1
 --- !u!114 &1205774867
 MonoBehaviour:
@@ -7831,6 +7848,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 728575964}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ClearTradeMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1250727515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7986,6 +8015,8 @@ MonoBehaviour:
   value: 0
   suit: 
   faceName: 
+  upForTrade: 0
+  forAction: 0
   pNum: 1
 --- !u!114 &1265396856
 MonoBehaviour:
@@ -8580,6 +8611,8 @@ MonoBehaviour:
   value: 0
   suit: 
   faceName: 
+  upForTrade: 0
+  forAction: 0
   pNum: 1
 --- !u!114 &1398546939
 MonoBehaviour:
@@ -9342,6 +9375,8 @@ MonoBehaviour:
   value: 0
   suit: 
   faceName: 
+  upForTrade: 0
+  forAction: 0
   pNum: 1
 --- !u!114 &1482864996
 MonoBehaviour:
@@ -9718,6 +9753,8 @@ MonoBehaviour:
   value: 0
   suit: 
   faceName: 
+  upForTrade: 0
+  forAction: 0
   pNum: 1
 --- !u!114 &1558101952
 MonoBehaviour:
@@ -9930,6 +9967,8 @@ MonoBehaviour:
   value: 0
   suit: 
   faceName: 
+  upForTrade: 0
+  forAction: 0
   pNum: 1
 --- !u!114 &1604504416
 MonoBehaviour:

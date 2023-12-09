@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     public GameObject tradeRoundUI;
     public GameObject playerTurnScreen;
     public GameObject tradeMenu;
+    public GameObject tradePanel;
+    public GameObject actionPanel;
     public GameObject turnUI;
     public GameObject tradeManager;
     // Active Player hand
@@ -405,5 +407,10 @@ public class GameManager : MonoBehaviour
                 Draw(pList[i]);
             }
         }
+    }
+    public void ClearTradeMenu()
+    {
+        tradePanel.GetComponent<OfferDropzone>().cardsForOffer = 0;
+        actionPanel.GetComponent<ActionDropzone>().cardSloted = false;
     }
 }
