@@ -250,6 +250,7 @@ public class GameManager : MonoBehaviour
     //Method to end turn
     public void EndTurn()
     {
+        //ends current turn
         ResetHand();
         if (turnCounter < 4)
         {
@@ -335,6 +336,7 @@ public class GameManager : MonoBehaviour
     // Method that sets starting game text
     private void SetGameStartText()
     {
+        // sets game starting text
         if(gameStartTextObject == null)
         {return;}
         else
@@ -346,6 +348,7 @@ public class GameManager : MonoBehaviour
     // method that sets next turn message appropriately 
     private void SetNextTurnText()
     {
+        //sets text for next turn screen blocker
         nextTurnText = string.Format("{0} are you ready to start your turn?", turnOrder[turnCounter-1].name);
         nextTurnTextObject.text = nextTurnText;
     }
@@ -376,6 +379,7 @@ public class GameManager : MonoBehaviour
     }
     private void SetTableLocation()
     {
+        // rotates table to active players turn
         if(turnOrder[turnCounter-1].name == "Player 1")
         {
             Table.transform.position = Player1Location.position;
@@ -399,8 +403,10 @@ public class GameManager : MonoBehaviour
     }
     private void GetHand()
     {
+        // gets the active players hand
         activeStock = turnOrder[turnCounter-1].GetComponent<Player>().stock;
         int stockLength = activeStock.Count;
+        // sets hand to child of hand zone so they become visible. 
         for(int i = 0; i < stockLength; i++)
         {
             activeStock[i].transform.parent = stockZone.transform;
@@ -409,6 +415,7 @@ public class GameManager : MonoBehaviour
     }
     private void GetTradeHand()
     {
+        // gets the active players trade stock. 
         activeTradeStock = turnOrder[tradeTurnCounter-1].GetComponent<Player>().tradeStock;
         int tradeStockLength = activeTradeStock.Count;
         for(int i = 0; i < tradeStockLength; i++)
@@ -418,6 +425,7 @@ public class GameManager : MonoBehaviour
     }
     private void ResetHand()
     {
+        //resets the active hand so next players hand will become active.
         int stockLength = activeStock.Count;
         for(int i = 0; i < stockLength; i++)
         {
@@ -426,6 +434,7 @@ public class GameManager : MonoBehaviour
     }
     private void DrawStartHand()
     {
+        // draws the starting hand
         for(int i = 0; i < pList.Count; i++)
         {
             for(int j = 0; j < startingHandSize; j++)
@@ -436,6 +445,7 @@ public class GameManager : MonoBehaviour
     }
     public void ClearTradeMenu()
     {
+        // clears values so next player can use areas
         tradePanel.GetComponent<OfferDropzone>().cardsForOffer = 0;
         actionPanel.GetComponent<ActionDropzone>().cardSloted = false;
     }
@@ -443,6 +453,7 @@ public class GameManager : MonoBehaviour
     {
         if(turnOrder[tradeTurnCounter-1].name == "Player 1")
         {
+            // gets players 2-4 trade offers
             activeOffer1 = turnOrder[tradeTurnCounter].GetComponent<Player>().tradeStock;
             Offer1Text.text = turnOrder[tradeTurnCounter].GetComponent<Player>().name + "'s Trade offer";
             activeOffer2 = turnOrder[tradeTurnCounter+1].GetComponent<Player>().tradeStock;
@@ -461,6 +472,7 @@ public class GameManager : MonoBehaviour
         }
         if(turnOrder[tradeTurnCounter-1].name == "Player 2")
         {
+            // gets players 1,3,4 trade offers
             activeOffer1 = turnOrder[tradeTurnCounter-2].GetComponent<Player>().tradeStock;
             Offer1Text.text = turnOrder[tradeTurnCounter-2].GetComponent<Player>().name + "'s Trade offer";
             activeOffer2 = turnOrder[tradeTurnCounter].GetComponent<Player>().tradeStock;
@@ -479,6 +491,7 @@ public class GameManager : MonoBehaviour
         }
         if(turnOrder[tradeTurnCounter-1].name == "Player 3")
         {
+            // gets players 1,2,4 trade offers.
             activeOffer1 = turnOrder[tradeTurnCounter-3].GetComponent<Player>().tradeStock;
             Offer1Text.text = turnOrder[tradeTurnCounter-3].GetComponent<Player>().name + "'s Trade offer";
             activeOffer2 = turnOrder[tradeTurnCounter-2].GetComponent<Player>().tradeStock;
@@ -497,6 +510,7 @@ public class GameManager : MonoBehaviour
         }
         if(turnOrder[tradeTurnCounter-1].name == "Player 4")
         {
+            // gets players 1-3 trades offers.
             activeOffer1 = turnOrder[tradeTurnCounter-4].GetComponent<Player>().tradeStock;
             Offer1Text.text = turnOrder[tradeTurnCounter-4].GetComponent<Player>().name + "'s Trade offer";
             activeOffer2 = turnOrder[tradeTurnCounter-3].GetComponent<Player>().tradeStock;
@@ -516,6 +530,7 @@ public class GameManager : MonoBehaviour
     }
     public void ConfirmTradeButton()
     {
+        // used by confirm button to end trade turn.
         if(tradeTurnCounter < 4)
         {
             StartTrade();
@@ -528,6 +543,7 @@ public class GameManager : MonoBehaviour
     }
     public void canTradeToggle()
     {
+        //prevents player from trading a 2nd time.
         if(canTrade == false)
         {
             canTrade = true;
