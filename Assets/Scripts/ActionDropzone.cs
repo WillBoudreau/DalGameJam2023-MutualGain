@@ -9,7 +9,7 @@ public class ActionDropzone : MonoBehaviour, IDropHandler
     public bool cardSloted;
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log(eventData.pointerDrag.GetComponent<Card>().faceName + " of " + eventData.pointerDrag.GetComponent<Card>().suit  +" was dropped onto " + gameObject.name);
+        //Debug.Log(eventData.pointerDrag.GetComponent<Card>().faceName + " of " + eventData.pointerDrag.GetComponent<Card>().suit  +" was dropped onto " + gameObject.name);
         Draggable d = eventData.pointerDrag.GetComponent<Draggable>();
         if(d != null )
         {

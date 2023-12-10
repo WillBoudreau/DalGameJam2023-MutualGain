@@ -20,7 +20,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log ("OnBeginDrag");
+        //Debug.Log ("OnBeginDrag");
         if(card.transform.parent.name == "TradePanel")
         {
             card.transform.parent.GetComponent<OfferDropzone>().cardsForOffer -= 1;
@@ -41,12 +41,12 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     }
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log ("OnDrag");
+        //Debug.Log ("OnDrag");
         card.gameObject.transform.position = eventData.position;
     }
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log ("OnEndDrag");
+        //Debug.Log ("OnEndDrag");
         card.transform.SetParent(returnPatent);
         GetComponent<CanvasGroup>().blocksRaycasts = true; 
     }

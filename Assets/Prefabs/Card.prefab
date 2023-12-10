@@ -154,6 +154,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 151217bafd084834a8f9287110c22d5f, type: 3}
   display: {fileID: 9112664778708676761}
   id: 0
+  value: 0
+  suit: 
+  faceName: 
+  upForTrade: 0
+  forAction: 0
   pNum: 1
 --- !u!114 &-555508902090744102
 MonoBehaviour:
@@ -167,6 +172,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b3b2cfab45e95049a0aedd8c7b0e354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offerPosition: {fileID: 4516739030050101891, guid: f834731b41a07024f8eea56455e6b0d9, type: 3}
+  returnPatent: {fileID: 0}
+  cardType: 0
 --- !u!114 &1675456121591855539
 MonoBehaviour:
   m_ObjectHideFlags: 0

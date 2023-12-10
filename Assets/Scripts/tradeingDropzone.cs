@@ -5,8 +5,19 @@ using UnityEngine.EventSystems;
 
 public class tradeingDropzone : MonoBehaviour, IDropHandler
 {
-public void OnDrop(PointerEventData eventData)
+    public GameObject OfferCard;
+    public GameObject DesiredCard;
+    public GameObject TradeScreen;
+    public GameObject gameManager;
+    public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log(eventData.pointerDrag.GetComponent<Card>().faceName + " of " + eventData.pointerDrag.GetComponent<Card>().suit  +" was dropped onto " + gameObject.name);
+        if(gameManager.GetComponent<GameManager>().canTrade == true)
+        {
+            //Debug.Log(eventData.pointerDrag.GetComponent<Card>().faceName + " of " + eventData.pointerDrag.GetComponent<Card>().suit  +" was dropped onto " + gameObject.name);
+            TradeScreen.SetActive(true);
+            this.gameObject.transform.GetChild(0).parent = DesiredCard.transform;
+            eventData.pointerDrag.GetComponent<Draggable>().returnPatent = OfferCard.transform;
+        }
+
     }
 }

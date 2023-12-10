@@ -6,6 +6,10 @@ TagManager:
   tags:
   - TurnCount
   - PlayerTurn
+  - UITrade
+  - OfferCard
+  - DesiredCard
+  - UIOfferMenu
   layers:
   - Default
   - TransparentFX

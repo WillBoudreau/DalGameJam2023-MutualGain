@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
     private int turnCounter;
     private int tradeTurnCounter;
     public bool gameStarted = false;
+    public bool canTrade = false;
 
     // Start is called before the first frame update
     void Start()
@@ -264,6 +265,7 @@ public class GameManager : MonoBehaviour
 
     public void StartTrade()
     {
+        canTrade = true;
         tradeRoundUI.SetActive(true);
         playerTurnScreen.SetActive(false);
         //needs to be connected to trade
@@ -509,6 +511,29 @@ public class GameManager : MonoBehaviour
             activeOffer3[0].transform.parent = offer3Locations[0].transform;
             activeOffer3[1].transform.parent = offer3Locations[1].transform;
             activeOffer3[2].transform.parent = offer3Locations[2].transform;
+        }
+    }
+    public void ConfirmTradeButton()
+    {
+        if(tradeTurnCounter <= 4)
+        {
+            StartTrade();
+        }
+        if(tradeTurnCounter > 4)
+        {
+            tradeTurnCounter = 0;
+            EndTrade();
+        }
+    }
+    public void canTradeToggle()
+    {
+        if(canTrade == false)
+        {
+            canTrade = true;
+        }
+        else
+        {
+            canTrade = false;
         }
     }
 }

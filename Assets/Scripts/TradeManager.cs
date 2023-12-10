@@ -79,7 +79,7 @@ public class TradeManager : MonoBehaviour
         if (ts == TradeState.settlement) { state = TradeState.offer; OnNewTurn(); }
     }
 
-    void OnAccept()
+    public void OnAccept()
     {
         // get the cards
         GameObject?[,] tempCards = cards;
