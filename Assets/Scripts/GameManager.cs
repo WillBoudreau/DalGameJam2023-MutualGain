@@ -297,6 +297,7 @@ public class GameManager : MonoBehaviour
         }
 
         tradeManager.SetActive(true);
+        tradeManager.SendMessage("Startup");
         tradeTurnCounter += 1;
         GetTradeHand();
         GetTradeOffers();

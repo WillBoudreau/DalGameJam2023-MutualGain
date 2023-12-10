@@ -37,7 +37,7 @@ public class TradeManager : MonoBehaviour
     public int target; // target of the trade
     public int vetoIndex;
 
-    void OnAwake()
+    public void Startup()
     {
         // Setup tradelog things
         tradeLogs = new TradeLog[players * 2]; // In case of aces, we multiply by 2.
@@ -82,9 +82,9 @@ public class TradeManager : MonoBehaviour
     public void OnAccept()
     {
         // get the cards
-        GameObject?[,] tempCards = cards;
-        GameObject? offer = tempCards[index, offerIndex];
-        GameObject? req = tempCards[target, reqIndex];
+        GameObject[,] tempCards = cards;
+        GameObject offer = tempCards[index, offerIndex];
+        GameObject req = tempCards[target, reqIndex];
         tradeLogs[tradeID] = new TradeLog(tempCards, offer, req, index, offerIndex, target, reqIndex);
 
 
