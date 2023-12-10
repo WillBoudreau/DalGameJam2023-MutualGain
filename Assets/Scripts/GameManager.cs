@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
     private bool lastRound = false;
     private int roundNumber =0;
     private int turnCounter;
-    private int tradeTurnCounter;
+    public int tradeTurnCounter;
     public bool gameStarted = false;
     public bool canTrade = false;
 
@@ -516,11 +516,11 @@ public class GameManager : MonoBehaviour
     }
     public void ConfirmTradeButton()
     {
-        if(tradeTurnCounter <= 4)
+        if(tradeTurnCounter < 4)
         {
             StartTrade();
         }
-        if(tradeTurnCounter > 4)
+        else
         {
             tradeTurnCounter = 0;
             EndTrade();
