@@ -49,7 +49,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject prefab;
     [SerializeField] private GameObject Deck;
     [SerializeField] private GameObject ScreenHider;
-
+    // Trade Text references
+    public TextMeshProUGUI Offer1Text;
+    public TextMeshProUGUI Offer2Text;
+    public TextMeshProUGUI Offer3Text;
     //creating lists for cards
     [SerializeField] private List<GameObject> deck = new List<GameObject>();
     [SerializeField] private List<GameObject> attribution = new List<GameObject>(); //hand of cards for giving players suits
@@ -435,11 +438,14 @@ public class GameManager : MonoBehaviour
     }
     private void GetTradeOffers()
     {
-        if(turnOrder[tradeTurnCounter].name == "Player 1")
+        if(turnOrder[tradeTurnCounter-1].name == "Player 1")
         {
             activeOffer1 = turnOrder[tradeTurnCounter].GetComponent<Player>().tradeStock;
+            Offer1Text.text = turnOrder[tradeTurnCounter].GetComponent<Player>().name + "'s Trade offer";
             activeOffer2 = turnOrder[tradeTurnCounter+1].GetComponent<Player>().tradeStock;
+            Offer2Text.text = turnOrder[tradeTurnCounter+1].GetComponent<Player>().name + "'s Trade offer";
             activeOffer3 = turnOrder[tradeTurnCounter+2].GetComponent<Player>().tradeStock;
+            Offer3Text.text = turnOrder[tradeTurnCounter+2].GetComponent<Player>().name + "'s Trade offer";
             activeOffer1[0].transform.parent = offer1Locations[0].transform;
             activeOffer1[1].transform.parent = offer1Locations[1].transform;
             activeOffer1[2].transform.parent = offer1Locations[2].transform;
@@ -450,11 +456,14 @@ public class GameManager : MonoBehaviour
             activeOffer3[1].transform.parent = offer3Locations[1].transform;
             activeOffer3[2].transform.parent = offer3Locations[2].transform;
         }
-        if(turnOrder[tradeTurnCounter].name == "Player 2")
+        if(turnOrder[tradeTurnCounter-1].name == "Player 2")
         {
             activeOffer1 = turnOrder[tradeTurnCounter-2].GetComponent<Player>().tradeStock;
+            Offer1Text.text = turnOrder[tradeTurnCounter-2].GetComponent<Player>().name + "'s Trade offer";
             activeOffer2 = turnOrder[tradeTurnCounter].GetComponent<Player>().tradeStock;
+            Offer2Text.text = turnOrder[tradeTurnCounter].GetComponent<Player>().name + "'s Trade offer";
             activeOffer3 = turnOrder[tradeTurnCounter+1].GetComponent<Player>().tradeStock;
+            Offer3Text.text = turnOrder[tradeTurnCounter+1].GetComponent<Player>().name + "'s Trade offer";
             activeOffer1[0].transform.parent = offer1Locations[0].transform;
             activeOffer1[1].transform.parent = offer1Locations[1].transform;
             activeOffer1[2].transform.parent = offer1Locations[2].transform;
@@ -465,11 +474,14 @@ public class GameManager : MonoBehaviour
             activeOffer3[1].transform.parent = offer3Locations[1].transform;
             activeOffer3[2].transform.parent = offer3Locations[2].transform;
         }
-        if(turnOrder[tradeTurnCounter].name == "Player 3")
+        if(turnOrder[tradeTurnCounter-1].name == "Player 3")
         {
             activeOffer1 = turnOrder[tradeTurnCounter-2].GetComponent<Player>().tradeStock;
+            Offer1Text.text = turnOrder[tradeTurnCounter-2].GetComponent<Player>().name + "'s Trade offer";
             activeOffer2 = turnOrder[tradeTurnCounter-1].GetComponent<Player>().tradeStock;
+            Offer2Text.text = turnOrder[tradeTurnCounter-1].GetComponent<Player>().name + "'s Trade offer";
             activeOffer3 = turnOrder[tradeTurnCounter+1].GetComponent<Player>().tradeStock;
+            Offer3Text.text = turnOrder[tradeTurnCounter+1].GetComponent<Player>().name + "'s Trade offer";
             activeOffer1[0].transform.parent = offer1Locations[0].transform;
             activeOffer1[1].transform.parent = offer1Locations[1].transform;
             activeOffer1[2].transform.parent = offer1Locations[2].transform;
@@ -480,11 +492,14 @@ public class GameManager : MonoBehaviour
             activeOffer3[1].transform.parent = offer3Locations[1].transform;
             activeOffer3[2].transform.parent = offer3Locations[2].transform;
         }
-        if(turnOrder[tradeTurnCounter].name == "Player 4")
+        if(turnOrder[tradeTurnCounter-1].name == "Player 4")
         {
             activeOffer1 = turnOrder[tradeTurnCounter-3].GetComponent<Player>().tradeStock;
+            Offer1Text.text = turnOrder[tradeTurnCounter-3].GetComponent<Player>().name + "'s Trade offer";
             activeOffer2 = turnOrder[tradeTurnCounter-2].GetComponent<Player>().tradeStock;
+            Offer2Text.text = turnOrder[tradeTurnCounter-2].GetComponent<Player>().name + "'s Trade offer";
             activeOffer3 = turnOrder[tradeTurnCounter-1].GetComponent<Player>().tradeStock;
+            Offer3Text.text = turnOrder[tradeTurnCounter-1].GetComponent<Player>().name + "'s Trade offer";
             activeOffer1[0].transform.parent = offer1Locations[0].transform;
             activeOffer1[1].transform.parent = offer1Locations[1].transform;
             activeOffer1[2].transform.parent = offer1Locations[2].transform;
