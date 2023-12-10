@@ -479,12 +479,12 @@ public class GameManager : MonoBehaviour
         }
         if(turnOrder[tradeTurnCounter-1].name == "Player 3")
         {
-            activeOffer1 = turnOrder[tradeTurnCounter-2].GetComponent<Player>().tradeStock;
-            Offer1Text.text = turnOrder[tradeTurnCounter-2].GetComponent<Player>().name + "'s Trade offer";
-            activeOffer2 = turnOrder[tradeTurnCounter-1].GetComponent<Player>().tradeStock;
-            Offer2Text.text = turnOrder[tradeTurnCounter-1].GetComponent<Player>().name + "'s Trade offer";
-            activeOffer3 = turnOrder[tradeTurnCounter+1].GetComponent<Player>().tradeStock;
-            Offer3Text.text = turnOrder[tradeTurnCounter+1].GetComponent<Player>().name + "'s Trade offer";
+            activeOffer1 = turnOrder[tradeTurnCounter-3].GetComponent<Player>().tradeStock;
+            Offer1Text.text = turnOrder[tradeTurnCounter-3].GetComponent<Player>().name + "'s Trade offer";
+            activeOffer2 = turnOrder[tradeTurnCounter-2].GetComponent<Player>().tradeStock;
+            Offer2Text.text = turnOrder[tradeTurnCounter-2].GetComponent<Player>().name + "'s Trade offer";
+            activeOffer3 = turnOrder[tradeTurnCounter].GetComponent<Player>().tradeStock;
+            Offer3Text.text = turnOrder[tradeTurnCounter].GetComponent<Player>().name + "'s Trade offer";
             activeOffer1[0].transform.parent = offer1Locations[0].transform;
             activeOffer1[1].transform.parent = offer1Locations[1].transform;
             activeOffer1[2].transform.parent = offer1Locations[2].transform;
@@ -497,12 +497,12 @@ public class GameManager : MonoBehaviour
         }
         if(turnOrder[tradeTurnCounter-1].name == "Player 4")
         {
-            activeOffer1 = turnOrder[tradeTurnCounter-3].GetComponent<Player>().tradeStock;
-            Offer1Text.text = turnOrder[tradeTurnCounter-3].GetComponent<Player>().name + "'s Trade offer";
-            activeOffer2 = turnOrder[tradeTurnCounter-2].GetComponent<Player>().tradeStock;
-            Offer2Text.text = turnOrder[tradeTurnCounter-2].GetComponent<Player>().name + "'s Trade offer";
-            activeOffer3 = turnOrder[tradeTurnCounter-1].GetComponent<Player>().tradeStock;
-            Offer3Text.text = turnOrder[tradeTurnCounter-1].GetComponent<Player>().name + "'s Trade offer";
+            activeOffer1 = turnOrder[tradeTurnCounter-4].GetComponent<Player>().tradeStock;
+            Offer1Text.text = turnOrder[tradeTurnCounter-4].GetComponent<Player>().name + "'s Trade offer";
+            activeOffer2 = turnOrder[tradeTurnCounter-3].GetComponent<Player>().tradeStock;
+            Offer2Text.text = turnOrder[tradeTurnCounter-3].GetComponent<Player>().name + "'s Trade offer";
+            activeOffer3 = turnOrder[tradeTurnCounter-2].GetComponent<Player>().tradeStock;
+            Offer3Text.text = turnOrder[tradeTurnCounter-2].GetComponent<Player>().name + "'s Trade offer";
             activeOffer1[0].transform.parent = offer1Locations[0].transform;
             activeOffer1[1].transform.parent = offer1Locations[1].transform;
             activeOffer1[2].transform.parent = offer1Locations[2].transform;
